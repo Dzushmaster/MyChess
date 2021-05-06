@@ -1,0 +1,36 @@
+﻿<Page x:Class="Chess.View.MenuModel"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:viewModel="clr-namespace:Chess.ViewModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="900">
+    <Page.Resources>
+            <VisualBrush x:Key="ChessBackground">
+                <VisualBrush.Visual>
+                    <Grid>
+                        <Image Source="D:\COURSE_PROJECT\Images\Menu\MenuBackgorund2.jpg"/>
+                    </Grid>
+                </VisualBrush.Visual>
+            </VisualBrush>
+    </Page.Resources>
+    <Grid Background="{StaticResource ChessBackground}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3.5*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Foreground="White" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="0">
+                CHESS
+            </TextBlock>
+            <StackPanel VerticalAlignment="Center" Grid.Column="0">
+                <Button Content="{DynamicResource SearchOpponent}" Margin = "10" FontSize = "25"/>
+                <Button CommandParameter="OneDevice" Command="{Binding Path = SelectPage}" Content="{DynamicResource OneDevice}" Margin = "10" FontSize = "25"/>
+                <Button CommandParameter="Raiting" Command="{Binding SelectPage}" Content="{DynamicResource Raiting}" Margin = "10" FontSize = "25"/>
+                <Button Content="{DynamicResource ChangeLang}" Margin = "10" FontSize = "25"/>
+                <Button Content="{DynamicResource Exit}" Margin = "10" FontSize = "25"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

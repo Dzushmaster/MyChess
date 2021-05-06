@@ -1,0 +1,88 @@
+D:\COURSE_PROJECT\Chess\bin\Debug\Chess.exe.config
+D:\COURSE_PROJECT\Chess\bin\Debug\Chess.exe
+D:\COURSE_PROJECT\Chess\bin\Debug\Chess.pdb
+D:\COURSE_PROJECT\Chess\obj\Debug\Chess.csprojAssemblyReference.cache
+D:\COURSE_PROJECT\Chess\obj\Debug\MainWindow.g.cs
+D:\COURSE_PROJECT\Chess\obj\Debug\App.g.cs
+D:\COURSE_PROJECT\Chess\obj\Debug\Chess_MarkupCompile.cache
+D:\COURSE_PROJECT\Chess\obj\Debug\Chess_MarkupCompile.lref
+D:\COURSE_PROJECT\Chess\obj\Debug\MainWindow.baml
+D:\COURSE_PROJECT\Chess\obj\Debug\Chess.g.resources
+D:\COURSE_PROJECT\Chess\obj\Debug\Chess.Properties.Resources.resources
+D:\COURSE_PROJECT\Chess\obj\Debug\Chess.csproj.GenerateResource.cache
+D:\COURSE_PROJECT\Chess\obj\Debug\Chess.csproj.CoreCompileInputs.cache
+D:\COURSE_PROJECT\Chess\obj\Debug\Chess.exe
+D:\COURSE_PROJECT\Chess\obj\Debug\Chess.pdb
+D:\COURSE_PROJECT\Chess\obj\Debug\Languages\Lang.en-US.baml
+D:\COURSE_PROJECT\Chess\obj\Debug\Languages\Lang.baml
+D:\COURSE_PROJECT\Chess\obj\Debug\Languages\Lang.ru-RU.baml
+D:\COURSE_PROJECT\Chess\obj\Debug\App.baml
+D:\COURSE_PROJECT\Chess\obj\Debug\View\Game.g.cs
+D:\COURSE_PROJECT\Chess\obj\Debug\View\Login.g.cs
+D:\COURSE_PROJECT\Chess\obj\Debug\View\Registration.g.cs
+D:\COURSE_PROJECT\Chess\obj\Debug\View\Game.baml
+D:\COURSE_PROJECT\Chess\obj\Debug\View\Login.baml
+D:\COURSE_PROJECT\Chess\obj\Debug\View\Registration.baml
+D:\COURSE_PROJECT\Chess\obj\Debug\View\Raiting.g.cs
+D:\COURSE_PROJECT\Chess\obj\Debug\View\Raiting.baml
+D:\COURSE_PROJECT\Chess\obj\Debug\View\MenuModel.g.cs
+D:\COURSE_PROJECT\Chess\obj\Debug\View\MenuModel.baml
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\Chess.csprojAssemblyReference.cache
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\Languages\Lang.en-US.baml
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\Languages\Lang.baml
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\Languages\Lang.ru-RU.baml
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\MainWindow.g.cs
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\View\Game.g.cs
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\View\Login.g.cs
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\View\Raiting.g.cs
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\View\Registration.g.cs
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\App.g.cs
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\Chess_MarkupCompile.cache
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\Chess_MarkupCompile.lref
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\Chess.exe
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\Chess.pdb
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\bin\Debug\Chess.exe.config
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\bin\Debug\Chess.exe
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\bin\Debug\Chess.pdb
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\View\MenuModel.g.cs
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\App.baml
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\MainWindow.baml
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\View\Game.baml
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\View\Login.baml
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\View\MenuModel.baml
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\View\Raiting.baml
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\View\Registration.baml
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\Chess.g.resources
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\Chess.Properties.Resources.resources
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\Chess.csproj.GenerateResource.cache
+C:\Users\Skvortsoff\OneDrive\Рабочий стол\COURSE_PROJECT\Chess\obj\Debug\Chess.csproj.CoreCompileInputs.cache
+D:\COURSE_PROJECT\Chess\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Last_Course_Project\COURSE_PROJECT\Chess\bin\Debug\Chess.exe.config
+D:\Last_Course_Project\COURSE_PROJECT\Chess\bin\Debug\Chess.exe
+D:\Last_Course_Project\COURSE_PROJECT\Chess\bin\Debug\Chess.pdb
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Chess.csprojAssemblyReference.cache
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Languages\Lang.en-US.baml
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Languages\Lang.baml
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Languages\Lang.ru-RU.baml
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\MainWindow.g.cs
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\View\Game.g.cs
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\View\Login.g.cs
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\View\MenuModel.g.cs
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\View\Raiting.g.cs
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\View\Registration.g.cs
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\App.g.cs
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Chess_MarkupCompile.cache
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Chess_MarkupCompile.lref
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\App.baml
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\MainWindow.baml
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\View\Game.baml
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\View\Login.baml
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\View\MenuModel.baml
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\View\Raiting.baml
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\View\Registration.baml
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Chess.g.resources
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Chess.Properties.Resources.resources
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Chess.csproj.GenerateResource.cache
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Chess.csproj.CoreCompileInputs.cache
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Chess.exe
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Chess.pdb

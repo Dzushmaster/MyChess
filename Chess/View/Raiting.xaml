@@ -1,0 +1,54 @@
+﻿<Page x:Class="Chess.View.Raiting"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Chess.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="800"
+      Title="Raiting">
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="ButtonWithText">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style TargetType="Button" x:Key="ButtonWithImage">
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </Page.Resources>
+    <Grid Background="Black" ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="Return" CommandParameter="Home" Command="{Binding Path = SelectPage}" Style="{StaticResource ButtonWithImage}" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Image Source="D:\COURSE_PROJECT\Image\Left.png"/>
+        </Button>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <Button Style="{StaticResource ButtonWithImage}" Width="{Binding ElementName=Return, Path=ActualHeight}">
+                <Image Source="D:\COURSE_PROJECT\Image\Add.png"/>
+            </Button>
+            <Button Style="{StaticResource ButtonWithImage}" Width="{Binding ElementName=Return, Path=ActualHeight}" >
+                <Image Source="D:\COURSE_PROJECT\Image\trash.png" />
+            </Button>
+        </StackPanel>
+        <TextBlock Grid.Row="0" Foreground="White" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Text="{DynamicResource Raiting}"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1">
+            <Button Style="{StaticResource ButtonWithText}" Content="Points"/>
+            <Button Style="{StaticResource ButtonWithText}" Content="Number of parties"/>
+            <Button Style="{StaticResource ButtonWithText}" Content="%wins" />
+        </StackPanel>
+        <Grid Grid.Row="2" ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="5" x:Name="StackPan" Grid.Column="1" Background="AliceBlue">
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
