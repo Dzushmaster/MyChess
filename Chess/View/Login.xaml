@@ -5,10 +5,48 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Chess.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="900"
       Title="Login">
-
-    <Grid>
-        
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <VisualBrush x:Key="RegisterBackground">
+            <VisualBrush.Visual>
+                <Image Source="D:\Last_Course_Project\COURSE_PROJECT\Images\Menu\RegisterBackGround.jpg"/>
+            </VisualBrush.Visual>
+        </VisualBrush>
+    </Page.Resources>
+    <Grid Background="{StaticResource RegisterBackground}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="1" HorizontalAlignment="Center" FontSize="60" Foreground="White" Content="LOGIN:"/>
+        <StackPanel Margin="5" Grid.Column="1" VerticalAlignment="Center">
+            <Label Foreground="White" Content="Login:"/>
+            <TextBox Background="White"/>
+            <Label Foreground="White" Content="Password:"/>
+            <PasswordBox Background="White"/>
+            <Button Margin="0,45,0,20" Content="Login/Register"/>
+        </StackPanel>
     </Grid>
 </Page>
