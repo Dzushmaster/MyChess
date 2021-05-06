@@ -74,7 +74,6 @@
     <Compile Include="Model\Commands\RelayCommand.cs" />
     <Compile Include="Model\Roles.cs" />
     <Compile Include="Model\User.cs" />
-    <Compile Include="Model\WorkWithJSON\JSON.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />
     <Compile Include="View\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>

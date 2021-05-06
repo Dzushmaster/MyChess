@@ -43,41 +43,28 @@ namespace Chess.ViewModel
                       {
                           case "OneDevice":
                               {
-                                  if (game == null)
-                                  {
-                                      CurrentPage = game = new Game();
-                                  }
-                                  else
-                                  {
-                                      CurrentPage = game;
-                                  }
+                                  if (game == null){ CurrentPage = game = new Game(); }
+                                  else{ CurrentPage = game; }
                                   break;
                               }
                           case "Raiting":
                               {
-                                  if (raiting == null)
-                                  {
-                                      CurrentPage = raiting = new Raiting();
-                                  }
-                                  else
-                                  {
-                                      CurrentPage = raiting;
-                                  }
+                                  if (raiting == null) { CurrentPage = raiting = new Raiting(); }
+                                  else { CurrentPage = raiting; }
                                   break;
                               }
                           case "Menu":
-                          {
-                              if (menu == null)
                               {
-                                  CurrentPage = menu = new MenuModel();
-                              }
-                              else
-                              {
-                                  CurrentPage = menu;
-                              }
+                                  if (menu == null) { CurrentPage = menu = new MenuModel(); }
+                                  else { CurrentPage = menu; }
 
-                              break;
-                          }
+                                  break;
+                              }
+                          case "Exit":
+                              {
+                                  Application.Current.MainWindow.Close();
+                                  break;
+                              }
                           default:
                               {
                                   CurrentPage = menu;
