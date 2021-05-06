@@ -21,7 +21,8 @@ namespace Chess.ViewModel
         private MenuModel menu;
         private Raiting raiting;
         private Game game;
-        private RelayCommand selectPage ;
+        private RelayCommand selectPage;
+        private RelayCommand closeGame;
         public Page CurrentPage
         {
             get => currentPage;
@@ -32,13 +33,16 @@ namespace Chess.ViewModel
                 OnPropertyChanged("CurrentPage");
             }
         }
-        
+        public RelayCommand CloseGame
+        {
+            get => closeGame ?? (closeGame = new RelayCommand(obj => { Application.Current.MainWindow.Close(); }));
+        }
         public RelayCommand SelectPage
         {
             get
             {
                 return selectPage ??(selectPage = new RelayCommand(obj =>
-                  {
+                {
                       switch (obj as string)
                       {
                           case "OneDevice":
@@ -60,20 +64,16 @@ namespace Chess.ViewModel
 
                                   break;
                               }
-                          case "Exit":
-                              {
-                                  Application.Current.MainWindow.Close();
-                                  break;
-                              }
                           default:
                               {
                                   CurrentPage = menu;
                                   break;
                               }
                       }
-                  }));
+                }));
             }
         }
+        
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
