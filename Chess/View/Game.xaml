@@ -8,32 +8,405 @@
       d:DesignHeight="650" d:DesignWidth="900"
       Title="Game">
     <Page.Resources>
+        <Style TargetType="TextBlock" x:Key="Time">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="MinWidth" Value="450"/>
+        </Style>
         <Style TargetType="Button" x:Key="UsersButton">
-            <Setter Property="MinWidth" Value="225"/>
+            <Setter Property="MinWidth" Value="450"/>
+        </Style>
+        <Style TargetType="Canvas" x:Key="Even_Field">
+            <Setter Property="Background" Value="#ffffff"/>
+        </Style>
+        <Style TargetType="Canvas" x:Key="NotEven_Field">
+            <Setter Property="Background" Value="#9acdcd" />
+        </Style>
+        <Style TargetType="Button" x:Key="ButtonWithImage">
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="BorderThickness" Value="0"/>
         </Style>
     </Page.Resources>
-    <Grid Background="Black">
+    <Grid Background="Black" ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="5*"/>
             <RowDefinition/>
             <RowDefinition Height="0.8*"/>
         </Grid.RowDefinitions>
-        <Grid ShowGridLines="True" Grid.Row="1">
+
+        <!--#region Pole-->
+        <Grid Margin="3" ShowGridLines="True" Grid.Row="1" Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--#region 0 row-->
+            <Border BorderThickness="0" Grid.Row="0" Grid.Column="0">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="0" Grid.Column="1">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="0" Grid.Column="2">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="0" Grid.Column="3">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="0" Grid.Column="4">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="0" Grid.Column="5">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="0" Grid.Column="6">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="0" Grid.Column="7">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <!--#endregion-->
+            
+            <!--#region 1 row-->
+            <Border BorderThickness="0" Grid.Row="1" Grid.Column="0">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="1" Grid.Column="1">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="1" Grid.Column="2">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="1" Grid.Column="3">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="1" Grid.Column="4">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="1" Grid.Column="5">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="1" Grid.Column="6">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="1" Grid.Column="7">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <!--#endregion-->
+            
+            <!--#region 2 row-->
+            <Border BorderThickness="0" Grid.Row="2" Grid.Column="0">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="2" Grid.Column="1">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="2" Grid.Column="2">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="2" Grid.Column="3">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="2" Grid.Column="4">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="2" Grid.Column="5">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="2" Grid.Column="6">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="2" Grid.Column="7">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <!--#endregion-->
+            
+            <!--#region 3 row-->
+            <Border BorderThickness="0" Grid.Row="3" Grid.Column="0">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="3" Grid.Column="1">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="3" Grid.Column="2">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="3" Grid.Column="3">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="3" Grid.Column="4">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="3" Grid.Column="5">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="3" Grid.Column="6">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="3" Grid.Column="7">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <!--#endregion-->
+            
+            <!--#region 4 row-->
+            <Border BorderThickness="0" Grid.Row="4" Grid.Column="0">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="4" Grid.Column="1">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="4" Grid.Column="2">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="4" Grid.Column="3">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="4" Grid.Column="4">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="4" Grid.Column="5">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="4" Grid.Column="6">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="4" Grid.Column="7">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <!--#endregion-->
+            
+            <!--#region 5 row-->
+            <Border BorderThickness="0" Grid.Row="5" Grid.Column="0">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="5" Grid.Column="1">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="5" Grid.Column="2">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="5" Grid.Column="3">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="5" Grid.Column="4">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="5" Grid.Column="5">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="5" Grid.Column="6">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="5" Grid.Column="7">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <!--#endregion-->
+            
+            <!--#region 6 row-->
+            <Border BorderThickness="0" Grid.Row="6" Grid.Column="0">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="6" Grid.Column="1">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="6" Grid.Column="2">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="6" Grid.Column="3">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="6" Grid.Column="4">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="6" Grid.Column="5">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="6" Grid.Column="6">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="6" Grid.Column="7">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+
+            <!--#endregion-->
+            
+            <!--#region 7 row-->
+            <Border BorderThickness="0" Grid.Row="7" Grid.Column="0">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="7" Grid.Column="1">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="7" Grid.Column="2">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="7" Grid.Column="3">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="7" Grid.Column="4">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="7" Grid.Column="5">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="7" Grid.Column="6">
+                <Canvas Style="{StaticResource NotEven_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <Border BorderThickness="0" Grid.Row="7" Grid.Column="7">
+                <Canvas Style="{StaticResource Even_Field}">
+                    <Image/>
+                </Canvas>
+            </Border>
+            <!--#endregion-->
         </Grid>
+        <!--#endregion-->
+        
         <StackPanel Orientation="Horizontal" Grid.Row="3">
-            <Button Style = "{StaticResource UsersButton}" Content="Current time"/>
-            <Button Style = "{StaticResource UsersButton}" >
-                <Image Source="D:\COURSE_PROJECT\Images\LeftBackArrow.png"/>
-            </Button>
-            <Button Style = "{StaticResource UsersButton}" >
-                <Image Source="D:\COURSE_PROJECT\Images\RightBackArrow.png"/>
-            </Button>
-            <Button Style = "{StaticResource UsersButton}" >
+            <TextBlock Style="{StaticResource Time}" Text="09:55 PM"/>
+            <Button Style = "{StaticResource UsersButton}" CommandParameter="Home" Command="{Binding Path = SelectPage}">
                 <Image Source="D:\COURSE_PROJECT\Images\Leaving.png"/>
             </Button>
         </StackPanel>

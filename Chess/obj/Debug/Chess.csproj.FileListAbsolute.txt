@@ -86,3 +86,8 @@ D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Chess.csproj.GenerateResou
 D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Chess.csproj.CoreCompileInputs.cache
 D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Chess.exe
 D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Chess.pdb
+D:\Last_Course_Project\COURSE_PROJECT\Chess\bin\Debug\EntityFramework.dll
+D:\Last_Course_Project\COURSE_PROJECT\Chess\bin\Debug\EntityFramework.SqlServer.dll
+D:\Last_Course_Project\COURSE_PROJECT\Chess\bin\Debug\EntityFramework.xml
+D:\Last_Course_Project\COURSE_PROJECT\Chess\bin\Debug\EntityFramework.SqlServer.xml
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Chess.csproj.CopyComplete
