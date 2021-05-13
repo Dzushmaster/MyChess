@@ -9,6 +9,9 @@ namespace Chess.Model.ChessLogic.Pieces
     interface IPiece
     {
         bool IsWhite { get; }
-
+        Coords[] PossibleMoves { get; }
+        Coords[] PossibleAttacks { get; }
+        void UpdatePossibleMoves(Situation situation, bool check, Coords coords);
+        void UpdatePossibleAttacks(Situation situation, Coords coords);
     }
 }
