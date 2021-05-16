@@ -8,9 +8,9 @@ namespace Chess.Model.ChessLogic
 {
     sealed class Coords
     {
-        public SByte Row { get; set; }
-        public SByte Column { get; set; }
-        public Coords(SByte Row, SByte Column)
+        public sbyte Row { get; set; }
+        public sbyte Column { get; set; }
+        public Coords(sbyte Row, sbyte Column)
         {
             this.Row = Row;
             this.Column = Column;

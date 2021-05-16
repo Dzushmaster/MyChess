@@ -81,9 +81,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\ChessLogic\Coords.cs" />
+    <Compile Include="Model\ChessLogic\Pieces\IPiece.cs" />
+    <Compile Include="Model\ChessLogic\Pieces\Piece.cs" />
+    <Compile Include="Model\ChessLogic\Situation.cs" />
     <Compile Include="Model\Commands\RelayCommand.cs" />
     <Compile Include="Model\Roles.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="ViewModel\BoardViewModel.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />
     <Compile Include="View\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
