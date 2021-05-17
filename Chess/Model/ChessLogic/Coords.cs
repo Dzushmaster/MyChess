@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Chess.Model.ChessLogic
 {
-    sealed class Coords
+    public sealed class Coords
     {
         public sbyte Row { get; set; }
         public sbyte Column { get; set; }
