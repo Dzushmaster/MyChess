@@ -83,6 +83,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\ChessLogic\Coords.cs" />
     <Compile Include="Model\ChessLogic\Pieces\IPiece.cs" />
+    <Compile Include="Model\ChessLogic\Pieces\MovingPiece.cs" />
     <Compile Include="Model\ChessLogic\Pieces\Piece.cs" />
     <Compile Include="Model\ChessLogic\Situation.cs" />
     <Compile Include="Model\Commands\RelayCommand.cs" />
