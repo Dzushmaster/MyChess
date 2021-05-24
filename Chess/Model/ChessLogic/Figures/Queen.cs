@@ -19,8 +19,13 @@ namespace Chess.Model.ChessLogic.Figures
             bishop.UpdatePossibleMoves(situation, check, coords);
             possibleMoves.AddRange(rook.PossibleMoves);
             possibleMoves.AddRange(bishop.PossibleMoves);
+            //Check after moving this piece
+            if (check || ProtectingKing)
+                for (int i = possibleMoves.Count - 1; i >= 0; i--)
+                    if (Engine.ValidMoveDuringCheck(coords, possibleMoves[i], situation) == false)
+                        possibleMoves.RemoveAt(i);
+
             PossibleMoves = possibleMoves.ToArray();
-            //if king is checked
         }
         public override void UpdatePossibleAttacks(Situation situation, Coords coords)
         {

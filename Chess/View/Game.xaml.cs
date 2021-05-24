@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Chess.View
 {
@@ -21,10 +22,15 @@ namespace Chess.View
     /// </summary>
     public partial class Game : Page
     {
+        Engine engine;
+        System.Windows.Media.Effects.BlurEffect objBlur = new System.Windows.Media.Effects.BlurEffect() { Radius = 5 };
         public Game()
         {
             InitializeComponent();
+            resizeTimer.Tick += resizeTimer_Tick;
             Button[,] buttons = createBoard();
+            engine = new Engine(buttons, textBlockStatus, OpenPawnChoice);
+            DataContext = engine;
         }
         public Button[,] createBoard()
         {
@@ -54,5 +60,31 @@ namespace Chess.View
             }
             return buttons;
         }
+        private char OpenPawnChoice(bool isWhite)
+        {
+            PawnSelection ps = new PawnSelection(isWhite);
+            ps.Owner = Application.Current.MainWindow;
+            Application.Current.MainWindow.Effect = objBlur;
+            ps.ShowDialog();
+            Application.Current.MainWindow.Effect = null;
+            return ps.Status;
+        }
+
+        private void GridBoard_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            engine.PoleClick((Coords)((Button)e.Source).Tag);
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            engine.LoadedChessUserControl();
+        }
+        DispatcherTimer resizeTimer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(10) };
+        void resizeTimer_Tick(object sender, EventArgs e)
+        {
+            resizeTimer.IsEnabled = false;
+            engine.ImageSizeWrapPanel = GridBoard.ActualWidth * sizeRatio;
+        }
+        const double sizeRatio = 0.105;
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Chess.Model.ChessLogic.Figures
 {
-    class Knight : MovingPiece
+    class Knight : Piece
     {
         public Knight(bool white) : base(white) { }
 
@@ -29,34 +29,6 @@ namespace Chess.Model.ChessLogic.Figures
                 if (situation.ChessBoard[procCoords.Row, procCoords.Column].Status == 'n' || situation.ChessBoard[procCoords.Row, procCoords.Column].IsWhite != IsWhite)
                     possibleMoves.Add(procCoords);
             }
-            //LeftTop 
-            if (coords.Row > 0 && coords.Column > 1)
-            {
-                procCoords = new Coords((sbyte)(coords.Row - 1), (sbyte)(coords.Column - 2));
-                if (situation.ChessBoard[procCoords.Row, procCoords.Column].Status == 'n' || situation.ChessBoard[procCoords.Row, procCoords.Column].IsWhite != IsWhite)
-                    possibleMoves.Add(procCoords);
-            }
-            //RightTop
-            if (coords.Row > 0 && coords.Column < 6)
-            {
-                procCoords = new Coords((sbyte)(coords.Row - 1), (sbyte)(coords.Column + 2));
-                if (situation.ChessBoard[procCoords.Row, procCoords.Column].Status == 'n' || situation.ChessBoard[procCoords.Row, procCoords.Column].IsWhite != IsWhite)
-                    possibleMoves.Add(procCoords);
-            }
-            //LeftBot
-            if (coords.Row < 7 && coords.Column > 1)
-            {
-                procCoords = new Coords((sbyte)(coords.Row + 1), (sbyte)(coords.Column - 2));
-                if (situation.ChessBoard[procCoords.Row, procCoords.Column].Status == 'n' || situation.ChessBoard[procCoords.Row, procCoords.Column].IsWhite != IsWhite)
-                    possibleMoves.Add(procCoords);
-            }
-            //RightBot
-            if (coords.Row < 7 && coords.Column < 6)
-            {
-                procCoords = new Coords((sbyte)(coords.Row + 1), (sbyte)(coords.Column + 2));
-                if (situation.ChessBoard[procCoords.Row, procCoords.Column].Status == 'n' || situation.ChessBoard[procCoords.Row, procCoords.Column].IsWhite != IsWhite)
-                    possibleMoves.Add(procCoords);
-            }
             //BotLeft
             if (coords.Row < 6 && coords.Column > 0)
             {
@@ -71,6 +43,41 @@ namespace Chess.Model.ChessLogic.Figures
                 if (situation.ChessBoard[procCoords.Row, procCoords.Column].Status == 'n' || situation.ChessBoard[procCoords.Row, procCoords.Column].IsWhite != IsWhite)
                     possibleMoves.Add(procCoords);
             }
+
+            //LeftTop 
+            if (coords.Row > 0 && coords.Column > 1)
+            {
+                procCoords = new Coords((sbyte)(coords.Row - 1), (sbyte)(coords.Column - 2));
+                if (situation.ChessBoard[procCoords.Row, procCoords.Column].Status == 'n' || situation.ChessBoard[procCoords.Row, procCoords.Column].IsWhite != IsWhite)
+                    possibleMoves.Add(procCoords);
+            }
+            //LeftBot
+            if (coords.Row < 7 && coords.Column > 1)
+            {
+                procCoords = new Coords((sbyte)(coords.Row + 1), (sbyte)(coords.Column - 2));
+                if (situation.ChessBoard[procCoords.Row, procCoords.Column].Status == 'n' || situation.ChessBoard[procCoords.Row, procCoords.Column].IsWhite != IsWhite)
+                    possibleMoves.Add(procCoords);
+            }
+
+            //RightTop
+            if (coords.Row > 0 && coords.Column < 6)
+            {
+                procCoords = new Coords((sbyte)(coords.Row - 1), (sbyte)(coords.Column + 2));
+                if (situation.ChessBoard[procCoords.Row, procCoords.Column].Status == 'n' || situation.ChessBoard[procCoords.Row, procCoords.Column].IsWhite != IsWhite)
+                    possibleMoves.Add(procCoords);
+            }
+            //RightBot
+            if (coords.Row < 7 && coords.Column < 6)
+            {
+                procCoords = new Coords((sbyte)(coords.Row + 1), (sbyte)(coords.Column + 2));
+                if (situation.ChessBoard[procCoords.Row, procCoords.Column].Status == 'n' || situation.ChessBoard[procCoords.Row, procCoords.Column].IsWhite != IsWhite)
+                    possibleMoves.Add(procCoords);
+            }
+            //Check attack after moving this piece
+            if (check || ProtectingKing)
+                for (int i = possibleMoves.Count - 1; i >= 0; i--)
+                    if (Engine.ValidMoveDuringCheck(coords, possibleMoves[i], situation) == false)
+                        possibleMoves.RemoveAt(i);
             PossibleMoves = possibleMoves.ToArray();
         }
         public override void UpdatePossibleAttacks(Situation situation, Coords coords)
@@ -82,24 +89,24 @@ namespace Chess.Model.ChessLogic.Figures
             //TopRight
             if (coords.Row > 1 && coords.Column < 7)
                 possibleAttacks.Add(new Coords((sbyte)(coords.Row - 2), (sbyte)(coords.Column + 1)));
-            //LeftTop 
-            if (coords.Row > 0 && coords.Column > 1)
-                possibleAttacks.Add(new Coords((sbyte)(coords.Row - 1), (sbyte)(coords.Column - 2)));
-            //RightTop
-            if (coords.Row > 0 && coords.Column < 6)
-                possibleAttacks.Add(new Coords((sbyte)(coords.Row - 1), (sbyte)(coords.Column + 2)));
-            //LeftBot
-            if (coords.Row < 7 && coords.Column > 1)
-                possibleAttacks.Add(new Coords((sbyte)(coords.Row + 1), (sbyte)(coords.Column - 2)));
-            //RightBot
-            if (coords.Row < 7 && coords.Column < 6)
-                possibleAttacks.Add(new Coords((sbyte)(coords.Row + 1), (sbyte)(coords.Column + 2)));
             //BotLeft
             if (coords.Row < 6 && coords.Column > 0)
                 possibleAttacks.Add(new Coords((sbyte)(coords.Row + 2), (sbyte)(coords.Column - 1)));
             //BotRight
             if (coords.Row < 6 && coords.Column < 7)
                 possibleAttacks.Add(new Coords((sbyte)(coords.Row + 2), (sbyte)(coords.Column + 1)));
+            //LeftTop 
+            if (coords.Row > 0 && coords.Column > 1)
+                possibleAttacks.Add(new Coords((sbyte)(coords.Row - 1), (sbyte)(coords.Column - 2)));
+            //LeftBot
+            if (coords.Row < 7 && coords.Column > 1)
+                possibleAttacks.Add(new Coords((sbyte)(coords.Row + 1), (sbyte)(coords.Column - 2)));
+            //RightTop
+            if (coords.Row > 0 && coords.Column < 6)
+                possibleAttacks.Add(new Coords((sbyte)(coords.Row - 1), (sbyte)(coords.Column + 2)));
+            //RightBot
+            if (coords.Row < 7 && coords.Column < 6)
+                possibleAttacks.Add(new Coords((sbyte)(coords.Row + 1), (sbyte)(coords.Column + 2)));
             
             PossibleAttacks = possibleAttacks.ToArray();
         }

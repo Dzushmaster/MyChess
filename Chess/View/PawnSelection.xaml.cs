@@ -33,27 +33,27 @@ namespace Chess.View
                 {
                     case 0:
                         if (isWhite)
-                            img.Source = new BitmapImage(new Uri("/COURSE_PROJECT/Image/Pieces/White_Rook.png"));
+                            img.Source = new BitmapImage(new Uri("D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/White_Rook.png"));
                         else
-                            img.Source = new BitmapImage(new Uri("/COURSE_PROJECT/Image/Pieces/Black_Rook.png"));
+                            img.Source = new BitmapImage(new Uri("D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/Black_Rook.png"));
                         break;
                     case 1:
                         if (isWhite)
-                            img.Source = new BitmapImage(new Uri("/COURSE_PROJECT/Image/Pieces/White_Bishop.png"));
+                            img.Source = new BitmapImage(new Uri("D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/White_Bishop.png"));
                         else
-                            img.Source = new BitmapImage(new Uri("/COURSE_PROJECT/Image/Pieces/Black_Bishop.png"));
+                            img.Source = new BitmapImage(new Uri("D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/Black_Bishop.png"));
                         break;
                     case 2:
                         if (isWhite)
-                            img.Source = new BitmapImage(new Uri("/COURSE_PROJECT/Image/Pieces/White_Knight.png"));
+                            img.Source = new BitmapImage(new Uri("D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/White_Knight.png"));
                         else
-                            img.Source = new BitmapImage(new Uri("/COURSE_PROJECT/Image/Pieces/Black_Knight.png"));
+                            img.Source = new BitmapImage(new Uri("D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/Black_Knight.png"));
                         break;
                     case 3:
                         if (isWhite)
-                            img.Source = new BitmapImage(new Uri("/COURSE_PROJECT/Image/Pieces/White_Queen.png"));
+                            img.Source = new BitmapImage(new Uri("D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/White_Queen.png"));
                         else
-                            img.Source = new BitmapImage(new Uri("/COURSE_PROJECT/Image/Pieces/Black_Queen.png"));
+                            img.Source = new BitmapImage(new Uri("D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/Black_Queen.png"));
                         break;
                 }
 

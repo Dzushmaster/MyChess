@@ -15,6 +15,11 @@ namespace Chess.Model.ChessLogic
             this.Row = Row;
             this.Column = Column;
         }
+
+        public Coords()
+        {
+        }
+
         public override string ToString()
         {
             return Row + ";" + Column;

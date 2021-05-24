@@ -68,10 +68,9 @@ namespace Chess.Model.ChessLogic.Figures
                         {
                             if(situation.ChessBoard[coords.Row, coords.Column + 1].Status == 'n' && PossibleEnemeAttacks.Contains(new Coords((coords.Row), (sbyte)(coords.Column + 1))) == false)
                             {
-                                cord = new Coords(coords.Row, (sbyte)(coords.Column + 1));
+                                cord = new Coords(coords.Row, (sbyte)(coords.Column + 2));
                                 if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' && PossibleEnemeAttacks.Contains(cord) == false)
                                 {
-                                    cord = new Coords(coords.Row, (sbyte)(coords.Column + 2));
                                     if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' && PossibleEnemeAttacks.Contains(cord) == false)
                                         possibleMoves.Add(cord);
                                 }
@@ -100,10 +99,9 @@ namespace Chess.Model.ChessLogic.Figures
                         {
                             if (situation.ChessBoard[coords.Row, coords.Column + 1].Status == 'n' && PossibleEnemeAttacks.Contains(new Coords((coords.Row), (sbyte)(coords.Column + 1))) == false)
                             {
-                                cord = new Coords(coords.Row, (sbyte)(coords.Column + 1));
+                                cord = new Coords(coords.Row, (sbyte)(coords.Column + 2));
                                 if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' && PossibleEnemeAttacks.Contains(cord) == false)
                                 {
-                                    cord = new Coords(coords.Row, (sbyte)(coords.Column + 2));
                                     if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' && PossibleEnemeAttacks.Contains(cord) == false)
                                         possibleMoves.Add(cord);
                                 }
@@ -124,8 +122,15 @@ namespace Chess.Model.ChessLogic.Figures
                         }
                     }
                 }
-                PossibleMoves = possibleMoves.ToArray();
             }
+            //Check possible attack after moving this piece
+            else
+            {
+                for (int i = possibleMoves.Count - 1; i >= 0; i--)
+                    if (Engine.ValidMoveDuringCheck(coords, possibleMoves[i], situation))
+                        possibleMoves.RemoveAt(i);
+            }
+            PossibleMoves = possibleMoves.ToArray();
             #endregion
         }
         public override void UpdatePossibleAttacks(Situation situation, Coords coords)
@@ -156,7 +161,6 @@ namespace Chess.Model.ChessLogic.Figures
             if (coords.Column > 0 && coords.Row < 7)
                 possibleAttacks.Add(new Coords((sbyte)(coords.Row + 1), (sbyte)(coords.Column - 1)));
             PossibleAttacks = possibleAttacks.ToArray();
-
         }
     }
 }

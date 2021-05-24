@@ -91,3 +91,5 @@ D:\Last_Course_Project\COURSE_PROJECT\Chess\bin\Debug\EntityFramework.SqlServer.
 D:\Last_Course_Project\COURSE_PROJECT\Chess\bin\Debug\EntityFramework.xml
 D:\Last_Course_Project\COURSE_PROJECT\Chess\bin\Debug\EntityFramework.SqlServer.xml
 D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\Chess.csproj.CopyComplete
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\View\PawnSelection.g.cs
+D:\Last_Course_Project\COURSE_PROJECT\Chess\obj\Debug\View\PawnSelection.baml

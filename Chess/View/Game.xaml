@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Chess.View"
       mc:Ignorable="d" 
       d:DesignHeight="650" d:DesignWidth="900"
-      Title="Game">
+      Title="Game" Loaded="Page_Loaded">
     <Page.Resources>
         <Style TargetType="TextBlock" x:Key="Time">
             <Setter Property="Background" Value="White"/>
@@ -22,6 +22,14 @@
             <Setter Property="Margin" Value="3"/>
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
+        <Style TargetType="TextBlock" x:Key="NameAndTimer">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="CheckAndMate">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Foreground" Value="Red" />
+        </Style>
     </Page.Resources>
     <Grid Background="Black" ShowGridLines="True">
         <Grid.RowDefinitions>
@@ -30,9 +38,8 @@
             <RowDefinition/>
             <RowDefinition Height="0.8*"/>
         </Grid.RowDefinitions>
-
         <!--#region Pole-->
-        <Grid x:Name="GridBoard" Margin="3" Grid.Row="1" Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" >
+        <Grid x:Name="GridBoard" Margin="3" Grid.Row="1" PreviewMouseLeftButtonDown="GridBoard_PreviewMouseLeftButtonDown" Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -55,7 +62,15 @@
             </Grid.RowDefinitions>
         </Grid>
         <!--#endregion-->
-        
+        <TextBlock x:Name="textBlockStatus" Style="{StaticResource CheckAndMate}" Grid.Row="1" VerticalAlignment="Center" Margin="75" HorizontalAlignment="Right"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="0">
+            <TextBlock Style="{StaticResource NameAndTimer}" Text="UserName 1"/>
+            <TextBlock Style="{StaticResource NameAndTimer}" Grid.Row="0" Margin="600,0,0,0" Text="05:00"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="2">
+            <TextBlock Style="{StaticResource NameAndTimer}" Text="UserName 2"/>
+            <TextBlock Style="{StaticResource NameAndTimer}" Grid.Row="2" Margin="600,0,0,0" Text="05:00"/>
+        </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="3">
             <TextBlock Style="{StaticResource Time}" Text="09:55 PM"/>
             <Button Style = "{StaticResource UsersButton}" CommandParameter="Home" Command="{Binding Path = SelectPage}">

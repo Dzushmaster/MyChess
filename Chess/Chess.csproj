@@ -81,10 +81,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\ChessLogic\CalculatedSituation.cs" />
+    <Compile Include="Model\ChessLogic\CalculatedSituationData.cs" />
+    <Compile Include="Model\ChessLogic\ConcurrentQueuedDictionary.cs" />
     <Compile Include="Model\ChessLogic\Coords.cs" />
+    <Compile Include="ViewModel\Engine.cs" />
+    <Compile Include="Model\ChessLogic\Figures\Bishop.cs" />
+    <Compile Include="Model\ChessLogic\Figures\King.cs" />
+    <Compile Include="Model\ChessLogic\Figures\Knight.cs" />
+    <Compile Include="Model\ChessLogic\Figures\Pawn.cs" />
+    <Compile Include="Model\ChessLogic\Figures\Queen.cs" />
+    <Compile Include="Model\ChessLogic\Figures\Rook.cs" />
     <Compile Include="Model\ChessLogic\Pieces\IPiece.cs" />
     <Compile Include="Model\ChessLogic\Pieces\MovingPiece.cs" />
     <Compile Include="Model\ChessLogic\Pieces\Piece.cs" />
+    <Compile Include="Model\ChessLogic\Settings.cs" />
     <Compile Include="Model\ChessLogic\Situation.cs" />
     <Compile Include="Model\Commands\RelayCommand.cs" />
     <Compile Include="Model\Roles.cs" />
@@ -99,6 +110,9 @@
     </Compile>
     <Compile Include="View\MenuModel.xaml.cs">
       <DependentUpon>MenuModel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PawnSelection.xaml.cs">
+      <DependentUpon>PawnSelection.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Raiting.xaml.cs">
       <DependentUpon>Raiting.xaml</DependentUpon>
@@ -139,6 +153,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MenuModel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PawnSelection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

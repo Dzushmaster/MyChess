@@ -12,6 +12,7 @@ using System.Windows;
 using Chess.Model.Commands;
 using Chess.View;
 using System.Windows.Input;
+using Chess.Model.ChessLogic;
 
 namespace Chess.ViewModel
 {
@@ -29,7 +30,8 @@ namespace Chess.ViewModel
             set
             {
                 currentPage = value;
-                currentPage.DataContext = this;
+                if(!(currentPage.DataContext is Engine))
+                    currentPage.DataContext = this;
                 OnPropertyChanged("CurrentPage");
             }
         }

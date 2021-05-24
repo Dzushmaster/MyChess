@@ -21,18 +21,40 @@ namespace Chess.Model.ChessLogic.Figures
             for(col = (sbyte)(coords.Column - 1); col >=0; col--)
             {
                 row--;
-                if(row>=0)
+                if (row >= 0)
                 {
                     if (situation.ChessBoard[row, col].Status == 'n')
                         possibleMoves.Add(new Coords(row, col));
                     else
                     {
-                        if(situation.ChessBoard[row, col].IsWhite != IsWhite)
+                        if (situation.ChessBoard[row, col].IsWhite != IsWhite)
                             possibleMoves.Add(new Coords(row, col));
                         break;
                     }
                 }
+                else
+                    break;
             }
+            row = coords.Row;
+            //Right top
+            for (col = (sbyte)(coords.Column + 1); col < 8; col++)
+            {
+                row--;
+                if (row >= 0)
+                {
+                    if (situation.ChessBoard[row, col].Status == 'n')
+                        possibleMoves.Add(new Coords(row, col));
+                    else
+                    {
+                        if (situation.ChessBoard[row, col].IsWhite != IsWhite)
+                            possibleMoves.Add(new Coords(row, col));
+                        break;
+                    }
+                }
+                else
+                    break;
+            }
+
             row = coords.Row;
             //Left bottom
             for (col = (sbyte)(coords.Column - 1); col >= 0; col--)
@@ -49,7 +71,10 @@ namespace Chess.Model.ChessLogic.Figures
                         break;
                     }
                 }
+                else
+                    break;
             }
+            row = coords.Row;
             //Right bottom
             for (col = (sbyte)(coords.Column + 1); col < 8; col++)
             {
@@ -65,22 +90,15 @@ namespace Chess.Model.ChessLogic.Figures
                         break;
                     }
                 }
+                else
+                    break;
             }
-            //Right top
-            for (col = (sbyte)(coords.Column + 1); col < 8; col++)
+            //Check possible attack after moving this piece
+            if (check || ProtectingKing)
             {
-                row--;
-                if (row >= 0)
-                {
-                    if (situation.ChessBoard[row, col].Status == 'n')
-                        possibleMoves.Add(new Coords(row, col));
-                    else
-                    {
-                        if (situation.ChessBoard[row, col].IsWhite != IsWhite)
-                            possibleMoves.Add(new Coords(row, col));
-                        break;
-                    }
-                }
+                for (int i = possibleMoves.Count - 1; i >= 0; i--)
+                    if (Engine.ValidMoveDuringCheck(coords, possibleMoves[i], situation))
+                        possibleMoves.RemoveAt(i);
             }
             PossibleMoves = possibleMoves.ToArray();
         }
@@ -105,23 +123,71 @@ namespace Chess.Model.ChessLogic.Figures
                         {
                             sbyte row2 = row;
                             sbyte col2;
-                            for(col2 = (sbyte)(col-1); col2>=0; col2--)
+                            for (col2 = (sbyte)(col - 1); col2 >= 0; col2--)
                             {
                                 row2--;
                                 if (row2 >= 0)
                                 {
                                     if (situation.ChessBoard[row2, col2].Status == 'k')
-                                        PieceProtectingKingCoords = new Coords(row, col);
+                                    {
+                                        if (situation.ChessBoard[row2, col2].IsWhite != IsWhite)
+                                            PieceProtectingKingCoords = new Coords(row, col);
+                                    }
+                                    else
+                                        break;
                                 }
                                 else
                                     break;
                             }
-                        }       
+                        }
                         break;
                     }
                 }
+                else
+                    break;
             }
             row = coords.Row;
+            //Right top
+
+            for (col = (sbyte)(coords.Column + 1); col < 8; col++)
+            {
+                row--;
+                if (row >= 0)
+                {
+                    if (situation.ChessBoard[row, col].Status == 'n')
+                        possibleAttacks.Add(new Coords(row, col));
+                    else
+                    {
+                        possibleAttacks.Add(new Coords(row, col));
+                        if (situation.ChessBoard[row, col].IsWhite != IsWhite)
+                        {
+                            sbyte row2 = row;
+                            sbyte col2;
+                            for (col2 = (sbyte)(col + 1); col2 < 8; col2++)
+                            {
+                                row2--;
+                                if (row2 >= 0)
+                                {
+                                    if (situation.ChessBoard[row2, col2].Status == 'k')
+                                    {
+                                        if (situation.ChessBoard[row2, col2].IsWhite != IsWhite)
+                                            PieceProtectingKingCoords = new Coords(row, col);
+                                    }
+                                    else
+                                        break;
+                                }
+                                else
+                                    break;
+                            }
+                        }
+                        break;
+                    }
+                }
+                else
+                    break;
+            }
+            row = coords.Row;
+
             //Left bottom
             for (col = (sbyte)(coords.Column - 1); col >= 0; col--)
             {
@@ -143,7 +209,12 @@ namespace Chess.Model.ChessLogic.Figures
                                 if (row2 < 8)
                                 {
                                     if (situation.ChessBoard[row2, col2].Status == 'k')
-                                        PieceProtectingKingCoords = new Coords(row, col);
+                                    {
+                                        if (situation.ChessBoard[row2, col2].IsWhite != IsWhite)
+                                            PieceProtectingKingCoords = new Coords(row, col);
+                                    }
+                                    else
+                                        break;
                                 }
                                 else
                                     break;
@@ -152,38 +223,10 @@ namespace Chess.Model.ChessLogic.Figures
                         break;
                     }
                 }
+                else
+                    break;
             }
-            //Right top
-            for (col = (sbyte)(coords.Column + 1); col < 8; col++)
-            {
-                row--;
-                if (row >= 0)
-                {
-                    if (situation.ChessBoard[row, col].Status == 'n')
-                        possibleAttacks.Add(new Coords(row, col));
-                    else
-                    {
-                        possibleAttacks.Add(new Coords(row, col));
-                        if (situation.ChessBoard[row, col].IsWhite != IsWhite)
-                        {
-                            sbyte row2 = row;
-                            sbyte col2;
-                            for (col2 = (sbyte)(col + 1); col2 < 8; col2++)
-                            {
-                                row2--;
-                                if (row2 >= 0)
-                                {
-                                    if (situation.ChessBoard[row2, col2].Status == 'k')
-                                        PieceProtectingKingCoords = new Coords(row, col);
-                                }
-                                else
-                                    break;
-                            }
-                        }
-                        break;
-                    }
-                }
-            }
+
             row = coords.Row;
             //Right bottom
             for (col = (sbyte)(coords.Column + 1); col < 8; col++)
@@ -206,7 +249,12 @@ namespace Chess.Model.ChessLogic.Figures
                                 if (row2 < 8)
                                 {
                                     if (situation.ChessBoard[row2, col2].Status == 'k')
-                                        PieceProtectingKingCoords = new Coords(row, col);
+                                    {
+                                        if (situation.ChessBoard[row2, col2].IsWhite != IsWhite)
+                                            PieceProtectingKingCoords = new Coords(row, col);
+                                    }
+                                    else
+                                        break;
                                 }
                                 else
                                     break;
@@ -215,6 +263,8 @@ namespace Chess.Model.ChessLogic.Figures
                         break;
                     }
                 }
+                else
+                    break;
             }
             PossibleAttacks = possibleAttacks.ToArray();
         }
