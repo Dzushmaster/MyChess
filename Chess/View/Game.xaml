@@ -8,6 +8,14 @@
       d:DesignHeight="650" d:DesignWidth="900"
       Title="Game" Loaded="Page_Loaded">
     <Page.Resources>
+        <Style TargetType="Button" x:Key="NotEven">
+            <Setter Property="Background" Value="#9acdcd"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style TargetType="Button" x:Key="Even">
+            <Setter Property="Background" Value="#ffffff"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
         <Style TargetType="TextBlock" x:Key="Time">
             <Setter Property="Background" Value="White"/>
             <Setter Property="FontSize" Value="30"/>
@@ -60,6 +68,214 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <!--#region X0 -->
+            
+            <Button Grid.Row="0" Grid.Column="0" Style="{StaticResource Even}">
+                <Image Name="x0y0"/>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource NotEven}">
+                <Image Name="x0y1"/>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource Even}">
+                <Image Name="x0y2"/>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="3" Style="{StaticResource NotEven}">
+                <Image Name="x0y3"/>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="4" Style="{StaticResource Even}">
+                <Image Name="x0y4"/>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="5" Style="{StaticResource NotEven}">
+                <Image Name="x0y5"/>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="6" Style="{StaticResource Even}">
+                <Image Name="x0y6"/>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="7" Style="{StaticResource NotEven}">
+                <Image Name="x0y7"/>
+            </Button>
+            <!--#region X1 -->
+            <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource NotEven}">
+                <Image Name="x1y0"/>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource Even}">
+                <Image Name="x1y1"/>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="2" Style="{StaticResource NotEven}">
+                <Image Name="x1y2"/>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="3" Style="{StaticResource Even}">
+                <Image Name="x1y3"/>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="4" Style="{StaticResource NotEven}">
+                <Image Name="x1y4"/>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="5" Style="{StaticResource Even}">
+                <Image Name="x1y5"/>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="6" Style="{StaticResource NotEven}">
+                <Image Name="x1y6"/>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="7" Style="{StaticResource Even}">
+                <Image Name="x1y7"/>
+            </Button>
+
+            <!--#region X2 -->
+            <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource Even}">
+                <Image Name="x2y0"/>
+            </Button>
+            <Button Grid.Row="2" Grid.Column="1" Style="{StaticResource NotEven}">
+                <Image Name="x2y1"/>
+            </Button>
+            <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource Even}">
+                <Image Name="x2y2"/>
+            </Button>
+            <Button Grid.Row="2" Grid.Column="3" Style="{StaticResource NotEven}">
+                <Image Name="x2y3"/>
+            </Button>
+            <Button Grid.Row="2" Grid.Column="4" Style="{StaticResource Even}">
+                <Image Name="x2y4"/>
+            </Button>
+            <Button Grid.Row="2" Grid.Column="5" Style="{StaticResource NotEven}">
+                <Image Name="x2y5"/>
+            </Button>
+            <Button Grid.Row="2" Grid.Column="6" Style="{StaticResource Even}">
+                <Image Name="x2y6"/>
+            </Button>
+            <Button Grid.Row="2" Grid.Column="7" Style="{StaticResource NotEven}">
+                <Image Name="x2y7"/>
+            </Button>
+
+            <!--#region X3 -->
+            <Button Grid.Row="3" Grid.Column="0" Style="{StaticResource NotEven}">
+                <Image Name="x3y0"/>
+            </Button>
+            <Button Grid.Row="3" Grid.Column="1" Style="{StaticResource Even}">
+                <Image Name="x3y1"/>
+            </Button>
+            <Button Grid.Row="3" Grid.Column="2" Style="{StaticResource NotEven}">
+                <Image Name="x3y2"/>
+            </Button>
+            <Button Grid.Row="3" Grid.Column="3" Style="{StaticResource Even}">
+                <Image Name="x3y3"/>
+            </Button>
+            <Button Grid.Row="3" Grid.Column="4" Style="{StaticResource NotEven}">
+                <Image Name="x3y4"/>
+            </Button>
+            <Button Grid.Row="3" Grid.Column="5" Style="{StaticResource Even}">
+                <Image Name="x3y5"/>
+            </Button>
+            <Button Grid.Row="3" Grid.Column="6" Style="{StaticResource NotEven}">
+                <Image Name="x3y6"/>
+            </Button>
+            <Button Grid.Row="3" Grid.Column="7" Style="{StaticResource Even}">
+                <Image Name="x3y7"/>
+            </Button>
+
+            <!--#region X4 -->
+            <Button Grid.Row="4" Grid.Column="0" Style="{StaticResource Even}">
+                <Image Name="x4y0"/>
+            </Button>
+            <Button Grid.Row="4" Grid.Column="1" Style="{StaticResource NotEven}">
+                <Image Name="x4y1"/>
+            </Button>
+            <Button Grid.Row="4" Grid.Column="2" Style="{StaticResource Even}">
+                <Image Name="x4y2"/>
+            </Button>
+            <Button Grid.Row="4" Grid.Column="3" Style="{StaticResource NotEven}">
+                <Image Name="x4y3"/>
+            </Button>
+            <Button Grid.Row="4" Grid.Column="4" Style="{StaticResource Even}">
+                <Image Name="x4y4"/>
+            </Button>
+            <Button Grid.Row="4" Grid.Column="5" Style="{StaticResource NotEven}">
+                <Image Name="x4y5"/>
+            </Button>
+            <Button Grid.Row="4" Grid.Column="6" Style="{StaticResource Even}">
+                <Image Name="x4y6"/>
+            </Button>
+            <Button Grid.Row="4" Grid.Column="7" Style="{StaticResource NotEven}">
+                <Image Name="x4y7"/>
+            </Button>
+
+            <!--#region X5 -->
+            <Button Grid.Row="5" Grid.Column="0" Style="{StaticResource NotEven}">
+                <Image Name="x5y0"/>
+            </Button>
+            <Button Grid.Row="5" Grid.Column="1" Style="{StaticResource Even}">
+                <Image Name="x5y1"/>
+            </Button>
+            <Button Grid.Row="5" Grid.Column="2" Style="{StaticResource NotEven}">
+                <Image Name="x5y2"/>
+            </Button>
+            <Button Grid.Row="5" Grid.Column="3" Style="{StaticResource Even}">
+                <Image Name="x5y3"/>
+            </Button>
+            <Button Grid.Row="5" Grid.Column="4" Style="{StaticResource NotEven}">
+                <Image Name="x5y4"/>
+            </Button>
+            <Button Grid.Row="5" Grid.Column="5" Style="{StaticResource Even}">
+                <Image Name="x5y5"/>
+            </Button>
+            <Button Grid.Row="5" Grid.Column="6" Style="{StaticResource NotEven}">
+                <Image Name="x5y6"/>
+            </Button>
+            <Button Grid.Row="5" Grid.Column="7" Style="{StaticResource Even}">
+                <Image Name="x5y7"/>
+            </Button>
+
+            <!--#region X6 -->
+            <Button Grid.Row="6" Grid.Column="0" Style="{StaticResource Even}">
+                <Image Name="x6y0"/>
+            </Button>
+            <Button Grid.Row="6" Grid.Column="1" Style="{StaticResource NotEven}">
+                <Image Name="x6y1"/>
+            </Button>
+            <Button Grid.Row="6" Grid.Column="2" Style="{StaticResource Even}">
+                <Image Name="x6y2"/>
+            </Button>
+            <Button Grid.Row="6" Grid.Column="3" Style="{StaticResource NotEven}">
+                <Image Name="x6y3"/>
+            </Button>
+            <Button Grid.Row="6" Grid.Column="4" Style="{StaticResource Even}">
+                <Image Name="x6y4"/>
+            </Button>
+            <Button Grid.Row="6" Grid.Column="5" Style="{StaticResource NotEven}">
+                <Image Name="x6y5"/>
+            </Button>
+            <Button Grid.Row="6" Grid.Column="6" Style="{StaticResource Even}">
+                <Image Name="x6y6"/>
+            </Button>
+            <Button Grid.Row="6" Grid.Column="7" Style="{StaticResource NotEven}">
+                <Image Name="x6y7"/>
+            </Button>
+
+            <!--#region X7 -->
+            <Button Grid.Row="7" Grid.Column="0" Style="{StaticResource NotEven}">
+                <Image Name="x7y0"/>
+            </Button>
+            <Button Grid.Row="7" Grid.Column="1" Style="{StaticResource Even}">
+                <Image Name="x7y1"/>
+            </Button>
+            <Button Grid.Row="7" Grid.Column="2" Style="{StaticResource NotEven}">
+                <Image Name="x7y2"/>
+            </Button>
+            <Button Grid.Row="7" Grid.Column="3" Style="{StaticResource Even}">
+                <Image Name="x7y3"/>
+            </Button>
+            <Button Grid.Row="7" Grid.Column="4" Style="{StaticResource NotEven}">
+                <Image Name="x7y4"/>
+            </Button>
+            <Button Grid.Row="7" Grid.Column="5" Style="{StaticResource Even}">
+                <Image Name="x7y5"/>
+            </Button>
+            <Button Grid.Row="7" Grid.Column="6" Style="{StaticResource NotEven}">
+                <Image Name="x7y6"/>
+            </Button>
+            <Button Grid.Row="7" Grid.Column="7" Style="{StaticResource Even}">
+                <Image Name="x7y7"/>
+            </Button>
+
         </Grid>
         <!--#endregion-->
         <TextBlock x:Name="textBlockStatus" Style="{StaticResource CheckAndMate}" Grid.Row="1" VerticalAlignment="Center" Margin="75" HorizontalAlignment="Right"/>

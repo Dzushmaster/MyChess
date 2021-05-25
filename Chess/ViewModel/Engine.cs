@@ -17,14 +17,14 @@ namespace Chess.Model.ChessLogic
     class Engine : INotifyPropertyChanged
     {
         public double ImageSizeWrapPanel { get; set; }
-        Button[,] buttonChessBoard;
+        Image[,] buttonChessBoard;
         Coords[] selectedCoords;
         Func<bool, char> openPromotionOptions;
         Situation situation;
         CalculatedSituation calculatedSituation;
         TextBlock textBlockStatus;
 
-        public Engine(Button[,] buttons, TextBlock textBlockStatus, Func<bool, char> openPromotionOptions)
+        public Engine(Image[,] buttons, TextBlock textBlockStatus, Func<bool, char> openPromotionOptions)
         {
             buttonChessBoard = buttons;
             this.textBlockStatus = textBlockStatus;
@@ -170,18 +170,9 @@ namespace Chess.Model.ChessLogic
                     switch(situation.ChessBoard[row, col].Status)
                     {
                         case 'n':
-                            if(((Grid)(buttonChessBoard[row, col].Content)).Children[1] is Image)
-                            {
-                                ((Grid)(buttonChessBoard[row, col].Content)).Children.RemoveRange(0, 2);
-                                ((Grid)(buttonChessBoard[row, col].Content)).Children.Add(new System.Windows.UIElement());
-                                ((Grid)(buttonChessBoard[row, col].Content)).Children.Add(new System.Windows.UIElement());
-                            }
-                            break;
+                            continue;
                         default:
-                            Image img = GeneratePieceImage(situation.ChessBoard[row, col]);
-                            ((Grid)(buttonChessBoard[row, col].Content)).Children.RemoveRange(0, 2);
-                            ((Grid)(buttonChessBoard[row, col].Content)).Children.Add(new System.Windows.UIElement());
-                            ((Grid)(buttonChessBoard[row, col].Content)).Children.Add(img);
+                            buttonChessBoard[row, col].Source = GeneratePieceImage(situation.ChessBoard[row, col]);
                             break;
                     }
                 }
@@ -220,16 +211,16 @@ namespace Chess.Model.ChessLogic
         }
         void SelectSquare(Coords coords)
         {
-            UIElement ui = ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children[1];
-            ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.RemoveRange(0, 2);
-            ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.Add(ui);
+            //UIElement ui = ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children[1];
+            //((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.RemoveRange(0, 2);
+            //((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.Add(ui);
         }
         void DeselectSquare(Coords coords)
         {
-            UIElement ui = ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children[1];
-            ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.RemoveRange(0, 2);
-            ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.Add(new UIElement());
-            ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.Add(ui);
+            //UIElement ui = ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children[1];
+            //((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.RemoveRange(0, 2);
+            //((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.Add(new UIElement());
+            //((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.Add(ui);
         }
         Rectangle GenerateSelectedSquare(Brush color)
         {
@@ -241,11 +232,8 @@ namespace Chess.Model.ChessLogic
             selectedSquare.IsHitTestVisible = false;
             return selectedSquare;
         }
-        Image GeneratePieceImage(PieceChar pc, bool forWrapPanel = false)
+        BitmapImage GeneratePieceImage(PieceChar pc, bool forWrapPanel = false)
         {
-            Image image = new Image() { IsHitTestVisible = false };
-            image.SetValue(RenderOptions.BitmapScalingModeProperty, BitmapScalingMode.Fant);
-            image.Tag = pc;
             string path;
             switch(pc.Status)
             {
@@ -288,10 +276,7 @@ namespace Chess.Model.ChessLogic
                 default:
                     throw new Exception("Unexpected status");
             }
-            image.Width = 100;
-            image.Height = 100;
-            image.Source = new BitmapImage(new Uri(path, UriKind.Relative));
-            return image;
+            return new BitmapImage(new Uri(path));
         }
         TextBlock GenerateNoLostPiecesTextBlock()
         {
