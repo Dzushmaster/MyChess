@@ -16,7 +16,7 @@ namespace Chess.Model.ChessLogic.Pieces
                     for (sbyte column = 0; column < 8; column++)
                     {
                         if (ChessBoard[row, column].Status == 'k' && ChessBoard[row, column].IsWhite == WhiteOnTurn)
-                            return new Coords(row, column);
+                            return new Coords((sbyte)row, (sbyte)column);
                     }
                 }
                 throw new System.Exception("King is not found");
@@ -51,7 +51,7 @@ namespace Chess.Model.ChessLogic.Pieces
                         else if (column == 1 || column == 6)
                             ChessBoard[row, column] = new PieceChar('h', false);
                         else if (column == 2 || column == 5)
-                            ChessBoard[row, column] = new PieceChar('b', false);
+                            ChessBoard[row, column] = new PieceChar('s', false);
                         else if (column == 3)
                             ChessBoard[row, column] = new PieceChar('q', false);
                         else
@@ -69,7 +69,7 @@ namespace Chess.Model.ChessLogic.Pieces
                         else if (column == 1 || column == 6)             
                             ChessBoard[row, column] = new PieceChar('h');
                         else if (column == 2 || column == 5)             
-                            ChessBoard[row, column] = new PieceChar('b');
+                            ChessBoard[row, column] = new PieceChar('s');
                         else if (column == 3)                            
                             ChessBoard[row, column] = new PieceChar('q');
                         else                                             
@@ -83,7 +83,7 @@ namespace Chess.Model.ChessLogic.Pieces
 
         public Situation(Situation situation)
         {
-            ChessBoard = situation.ChessBoard;
+            ChessBoard = (PieceChar[,])situation.ChessBoard.Clone();
             WhiteOnTurn = situation.WhiteOnTurn;
             Draw50 = situation.Draw50;
             WhiteKingMoved = situation.WhiteKingMoved;

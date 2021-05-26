@@ -67,7 +67,7 @@ namespace Chess.View
                 if (e.Source == button_rook)
                     Status = 'r';
                 else if (e.Source == button_bishop)
-                    Status = 'b';
+                    Status = 's';
                 else if (e.Source == button_knight)
                     Status = 'h';
                 else if (e.Source == button_queen)

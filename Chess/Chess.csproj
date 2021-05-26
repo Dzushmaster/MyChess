@@ -84,7 +84,6 @@
     <Compile Include="Model\ChessLogic\CalculatedSituation.cs" />
     <Compile Include="Model\ChessLogic\CalculatedSituationData.cs" />
     <Compile Include="Model\ChessLogic\ConcurrentQueuedDictionary.cs" />
-    <Compile Include="Model\ChessLogic\Coords.cs" />
     <Compile Include="ViewModel\Engine.cs" />
     <Compile Include="Model\ChessLogic\Figures\Bishop.cs" />
     <Compile Include="Model\ChessLogic\Figures\King.cs" />

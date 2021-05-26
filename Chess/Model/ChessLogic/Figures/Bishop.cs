@@ -97,7 +97,7 @@ namespace Chess.Model.ChessLogic.Figures
             if (check || ProtectingKing)
             {
                 for (int i = possibleMoves.Count - 1; i >= 0; i--)
-                    if (Engine.ValidMoveDuringCheck(coords, possibleMoves[i], situation))
+                    if (Engine.ValidMoveDuringCheck(coords, possibleMoves[i], situation) == false)
                         possibleMoves.RemoveAt(i);
             }
             PossibleMoves = possibleMoves.ToArray();

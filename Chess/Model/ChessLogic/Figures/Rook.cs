@@ -51,7 +51,7 @@ namespace Chess.Model.ChessLogic.Figures
                 }
             }
             //Bottom side
-            for (sbyte row = (sbyte)(coords.Row + 1); row < 8; row--)
+            for (sbyte row = (sbyte)(coords.Row + 1); row < 8; row++)
             {
                 if (situation.ChessBoard[row, coords.Column].Status == 'n')
                     possibleMoves.Add(new Coords(row, coords.Column));

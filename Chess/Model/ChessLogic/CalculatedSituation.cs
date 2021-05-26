@@ -40,7 +40,7 @@ namespace Chess.Model.ChessLogic
                             case 'h':
                                 piece = new Knight(situation.ChessBoard[row, col].IsWhite);
                                 break;
-                            case 'b':
+                            case 's':
                                 piece = new Bishop(situation.ChessBoard[row, col].IsWhite);
                                 break;
                             case 'q':
@@ -78,7 +78,7 @@ namespace Chess.Model.ChessLogic
                             case 'h':
                                 piece = new Knight(situation.ChessBoard[row, col].IsWhite);
                                 break;
-                            case 'b':
+                            case 's':
                                 piece = new Bishop(situation.ChessBoard[row, col].IsWhite);
                                 break;
                             case 'q':
@@ -154,7 +154,7 @@ namespace Chess.Model.ChessLogic
                         case 'h':
                             piece = new Knight(situation.ChessBoard[row, col].IsWhite);
                             break;
-                        case 'b':
+                        case 's':
                             piece = new Bishop(situation.ChessBoard[row, col].IsWhite);
                             break;
                         case 'q':

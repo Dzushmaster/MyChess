@@ -19,9 +19,11 @@ namespace Chess.Model.ChessLogic.Figures
                 {
                     if (situation.ChessBoard[coords.Row + 1, coords.Column].Status == 'n')
                     {
-                        possibleMoves.Add(new Coords(coords.Row, coords.Column));
-                        if (coords.Row == 1 && situation.ChessBoard[coords.Row + 2, coords.Column].Status == 'n')
-                            possibleMoves.Add(new Coords((sbyte)(coords.Row + 2), coords.Column));
+                        possibleMoves.Add(new Coords((sbyte)(coords.Row + 1), coords.Column));
+
+                        if (coords.Row == 1)
+                            if(situation.ChessBoard[coords.Row + 2, coords.Column].Status == 'n')
+                                possibleMoves.Add(new Coords((sbyte)(coords.Row + 2), coords.Column));
                     }
                     if (coords.Column != 0 && situation.ChessBoard[coords.Row + 1, coords.Column - 1].Status != 'n' && situation.ChessBoard[coords.Row + 1, coords.Column - 1].IsWhite != IsWhite)
                     {
@@ -39,7 +41,7 @@ namespace Chess.Model.ChessLogic.Figures
                 {
                     if (situation.ChessBoard[coords.Row - 1, coords.Column].Status == 'n')
                     {
-                        possibleMoves.Add(new Coords(coords.Row, coords.Column));
+                        possibleMoves.Add(new Coords((sbyte)(coords.Row - 1), coords.Column));
                         if (coords.Row == 6 && situation.ChessBoard[coords.Row - 2, coords.Column].Status == 'n')
                             possibleMoves.Add(new Coords((sbyte)(coords.Row - 2), coords.Column));
                     }

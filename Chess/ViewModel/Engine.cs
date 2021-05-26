@@ -14,17 +14,31 @@ using System.Windows.Threading;
 
 namespace Chess.Model.ChessLogic
 {
+    public struct Coords
+    {
+        public sbyte Row { get; set; }
+        public sbyte Column { get; set; }
+        public Coords(sbyte row, sbyte column)
+        {
+            Row = row;
+            Column = column;
+        }
+        public override string ToString()
+        {
+            return Row + ";" + Column;
+        }
+    }
     class Engine : INotifyPropertyChanged
     {
         public double ImageSizeWrapPanel { get; set; }
-        Image[,] buttonChessBoard;
+        Button[,] buttonChessBoard;
         Coords[] selectedCoords;
         Func<bool, char> openPromotionOptions;
         Situation situation;
         CalculatedSituation calculatedSituation;
         TextBlock textBlockStatus;
 
-        public Engine(Image[,] buttons, TextBlock textBlockStatus, Func<bool, char> openPromotionOptions)
+        public Engine(Button[,] buttons, TextBlock textBlockStatus, Func<bool, char> openPromotionOptions)
         {
             buttonChessBoard = buttons;
             this.textBlockStatus = textBlockStatus;
@@ -72,9 +86,7 @@ namespace Chess.Model.ChessLogic
             if (automaticPromotion && situation.ChessBoard[to.Row, to.Column].Status == 'p')
                 if (to.Row == 7 || to.Row == 0)
                     situation.ChessBoard[to.Row, to.Column].Status = 'q';
-            situation.WhiteOnTurn = !situation.WhiteOnTurn;
-
-                
+            situation.WhiteOnTurn = !situation.WhiteOnTurn;                
         }
         public static bool ValidMoveDuringCheck(Coords from, Coords to, Situation situation)
         {
@@ -170,9 +182,18 @@ namespace Chess.Model.ChessLogic
                     switch(situation.ChessBoard[row, col].Status)
                     {
                         case 'n':
-                            continue;
+                            if(((Grid)buttonChessBoard[row, col].Content).Children[1] is Image)
+                            {
+                                ((Grid)(buttonChessBoard[row, col].Content)).Children.RemoveRange(0, 2);
+                                ((Grid)(buttonChessBoard[row, col].Content)).Children.Add(new System.Windows.UIElement());
+                                ((Grid)(buttonChessBoard[row, col].Content)).Children.Add(new System.Windows.UIElement());
+                            }
+                            break;
                         default:
-                            buttonChessBoard[row, col].Source = GeneratePieceImage(situation.ChessBoard[row, col]);
+                            Image img = GeneratePieceImage(situation.ChessBoard[row, col]);
+                            ((Grid)(buttonChessBoard[row, col].Content)).Children.RemoveRange(0, 2);
+                            ((Grid)(buttonChessBoard[row, col].Content)).Children.Add(new System.Windows.UIElement());
+                            ((Grid)(buttonChessBoard[row, col].Content)).Children.Add(img);
                             break;
                     }
                 }
@@ -202,25 +223,34 @@ namespace Chess.Model.ChessLogic
             IPiece piece = calculatedSituation.PieceOnTurn[coords];
             selectedCoords = new Coords[piece.PossibleMoves.Length + 1];
             selectedCoords[selectedCoords.Length - 1] = coords;
-            SelectSquare(coords);
+            SelectSquare(coords, false, true);
             for(int i = 0; i<piece.PossibleMoves.Length; i++)
             {
                 selectedCoords[i] = piece.PossibleMoves[i];
                 SelectSquare(piece.PossibleMoves[i]);
             }
         }
-        void SelectSquare(Coords coords)
+        void SelectSquare(Coords coords, bool ai = false, bool main = false)
         {
-            //UIElement ui = ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children[1];
-            //((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.RemoveRange(0, 2);
-            //((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.Add(ui);
+            UIElement ui = ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children[1];
+            ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.RemoveRange(0, 2);
+            if (!ai)
+            {
+                if (!main)
+                    ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.Add(GenerateSelectedSquare(Brushes.Purple));
+                else
+                    ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.Add(GenerateSelectedSquare(Brushes.Maroon));
+            }
+            else
+                ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.Add(GenerateSelectedSquare(Brushes.Green));
+            ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.Add(ui);
         }
         void DeselectSquare(Coords coords)
         {
-            //UIElement ui = ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children[1];
-            //((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.RemoveRange(0, 2);
-            //((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.Add(new UIElement());
-            //((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.Add(ui);
+            UIElement ui = ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children[1];
+            ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.RemoveRange(0, 2);
+            ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.Add(new UIElement());
+            ((Grid)(buttonChessBoard[coords.Row, coords.Column].Content)).Children.Add(ui);
         }
         Rectangle GenerateSelectedSquare(Brush color)
         {
@@ -232,8 +262,11 @@ namespace Chess.Model.ChessLogic
             selectedSquare.IsHitTestVisible = false;
             return selectedSquare;
         }
-        BitmapImage GeneratePieceImage(PieceChar pc, bool forWrapPanel = false)
+        Image GeneratePieceImage(PieceChar pc, bool forWrapPanel = false)
         {
+            Image image = new Image() { IsHitTestVisible = false };
+            image.SetValue(RenderOptions.BitmapScalingModeProperty, BitmapScalingMode.Fant);
+            image.Tag = pc;
             string path;
             switch(pc.Status)
             {
@@ -255,7 +288,7 @@ namespace Chess.Model.ChessLogic
                     else
                         path = "D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/Black_Knight.png";
                     break;
-                case 'b':
+                case 's':
                     if (pc.IsWhite)
                         path = "D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/White_Bishop.png";
                     else
@@ -276,7 +309,8 @@ namespace Chess.Model.ChessLogic
                 default:
                     throw new Exception("Unexpected status");
             }
-            return new BitmapImage(new Uri(path));
+            image.Source = new BitmapImage(new Uri(path));
+            return image;
         }
         TextBlock GenerateNoLostPiecesTextBlock()
         {

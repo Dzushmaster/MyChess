@@ -8,7 +8,7 @@ namespace Chess.Model.ChessLogic.Pieces
 {
     public struct PieceChar
     {
-        // n - clear, k - king, q - queen, r - rook, b - bishop, h - knight, p - pawn
+        // n - clear, k - king, q - queen, r - rook, s - bishop, h - knight, p - pawn
         public char Status { get; set; }
         public bool IsWhite { get; set; }
         public PieceChar(char Status, bool IsWhite = true)
