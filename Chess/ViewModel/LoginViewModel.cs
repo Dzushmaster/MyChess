@@ -18,7 +18,7 @@ namespace Chess.ViewModel
         public static bool checkAllDataToLogin(string nickName, string password)
         {
             if(DataBaseMethods.FindUserByName(nickName))
-                logedUser = DataBaseMethods.FindUserPassword(nickName, password);
+                logedUser = DataBaseMethods.FindUserPassword(nickName, password);   
             return logedUser == null;
         }
 

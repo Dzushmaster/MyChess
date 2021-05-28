@@ -185,6 +185,7 @@
     <Compile Include="Model\ChessLogic\CalculatedSituation.cs" />
     <Compile Include="Model\ChessLogic\CalculatedSituationData.cs" />
     <Compile Include="Model\ChessLogic\ConcurrentQueuedDictionary.cs" />
+    <Compile Include="Model\ChessLogic\File.cs" />
     <Compile Include="Model\DataBase\DataBaseMethods.cs" />
     <Compile Include="Model\DataBase\DBContexts.cs" />
     <Compile Include="Model\GameInf.cs" />

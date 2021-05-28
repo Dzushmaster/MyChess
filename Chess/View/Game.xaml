@@ -25,11 +25,13 @@
             <Setter Property="MinWidth" Value="225"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Background" Value="#9acdcd"/>
+            <Setter Property="FontSize" Value="30"/>
         </Style>
         <Style TargetType="Button" x:Key="UsersButton2">
             <Setter Property="MinWidth" Value="225"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Background" Value="#ffff"/>
+            <Setter Property="FontSize" Value="30"/>
         </Style>
 
         <Style TargetType="TextBlock" x:Key="NameAndTimer">
@@ -37,7 +39,7 @@
             <Setter Property="Foreground" Value="White"/>
         </Style>
         <Style TargetType="TextBlock" x:Key="CheckAndMate">
-            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontSize" Value="25"/>
             <Setter Property="Foreground" Value="Red" />
         </Style>
     </Page.Resources>
@@ -72,7 +74,7 @@
             </Grid.RowDefinitions>
         </Grid>
         <!--#endregion-->
-        <TextBlock x:Name="textBlockStatus" Style="{StaticResource CheckAndMate}" Grid.Row="1" VerticalAlignment="Center" Margin="75" HorizontalAlignment="Right"/>
+        <TextBlock x:Name="textBlockStatus" Style="{StaticResource CheckAndMate}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="5" HorizontalAlignment="Right"/>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
             <TextBlock Style="{StaticResource NameAndTimer}" Name="usN1"/>
         </StackPanel>
@@ -81,8 +83,8 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="3">
             <Label Style="{StaticResource Time}" Name="LiveTimeLabel" Content="%TIME%" Background="White"/>
-            <Button Style="{StaticResource UsersButton}" Content="Сохранить партию"/>
-            <Button Style="{StaticResource UsersButton2}" Content="Загрузить партию"/>
+            <Button Style="{StaticResource UsersButton}" Content="Сохранить партию" Click="SaveSit"/>
+            <Button Style="{StaticResource UsersButton2}" Content="Загрузить партию" Click="LoadSit"/>
             <Button Style = "{StaticResource UsersButton}" CommandParameter="Home" Command="{Binding Path = SelectPage}">
                 <Image Source="D:\COURSE_PROJECT\Images\Leaving.png"/>
             </Button>

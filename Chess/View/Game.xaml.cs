@@ -90,5 +90,15 @@ namespace Chess.View
         {
             LiveTimeLabel.Content = DateTime.Now.ToString("HH:mm:ss");
         }
+
+        private void SaveSit(object sender, RoutedEventArgs e)
+        {
+            engine.SaveIntoFile();
+        }
+
+        private void LoadSit(object sender, RoutedEventArgs e)
+        {
+            engine.LoadFromFile();
+        }
     }
 }

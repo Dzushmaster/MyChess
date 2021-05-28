@@ -99,6 +99,18 @@ namespace Chess.Model.DataBase
             }
             return players;
         }
-
+        public static void UpdateAfterWins(Player User, Player Enemy)
+        {
+            using (DBContexts connecting = new DBContexts())
+            {
+                Player player = connecting.Players.FirstOrDefault(b => b.NickName.Equals(User.NickName));
+                player.WinsCount = User.WinsCount;
+                player.AmountParties = User.AmountParties;
+                connecting.SaveChanges();
+                Player player2 = connecting.Players.FirstOrDefault(b => b.NickName.Equals(Enemy.NickName));
+                player2.WinsCount = User.WinsCount;
+                player2.AmountParties = player2.AmountParties;
+            }
+        }
     }
 }

@@ -1,4 +1,7 @@
 ﻿using Chess.Model.ChessLogic.Pieces;
+using Chess.Model.DataBase;
+using Chess.ViewModel;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,11 +34,17 @@ namespace Chess.Model.ChessLogic
     class Engine : INotifyPropertyChanged
     {
         public double ImageSizeWrapPanel { get; set; }
+
         Button[,] buttonChessBoard;
+
         Coords[] selectedCoords;
+
         Func<bool, char> openPromotionOptions;
+
         Situation situation;
+
         CalculatedSituation calculatedSituation;
+
         TextBlock textBlockStatus;
 
         public Engine(Button[,] buttons, TextBlock textBlockStatus, Func<bool, char> openPromotionOptions)
@@ -46,17 +55,17 @@ namespace Chess.Model.ChessLogic
         }
         public static void MovePiece(Coords from, Coords to, Situation situation, bool automaticPromotion = true)
         {
-            if(situation.ChessBoard[from.Row, from.Column].Status == 'r')
+            if (situation.ChessBoard[from.Row, from.Column].Status == 'r')
             {
                 #region Make castling from Rook
-                if(from.Row == 0)
+                if (from.Row == 0)
                 {
                     if (from.Column == 0)
                         situation.BlackLongRookMoved = true;
-                    else if(from.Column == 7)
+                    else if (from.Column == 7)
                         situation.BlackShortRookMoved = true;
                 }
-                else if(from.Row == 7)
+                else if (from.Row == 7)
                 {
                     if (from.Column == 0)
                         situation.WhiteLongRookMoved = true;
@@ -65,13 +74,13 @@ namespace Chess.Model.ChessLogic
                 }
                 #endregion 
             }
-            else if(situation.ChessBoard[from.Row, from.Column].Status == 'k')
+            else if (situation.ChessBoard[from.Row, from.Column].Status == 'k')
             {
                 #region Make castling from King
                 if (situation.ChessBoard[from.Row, from.Column].IsWhite) situation.WhiteKingMoved = true;
                 else situation.BlackKingMoved = true;
                 int pos = from.Column - to.Column;
-                if(Math.Abs(pos) > 1)
+                if (Math.Abs(pos) > 1)
                 {
                     if (pos > 0)
                         MovePiece(new Coords(from.Row, (sbyte)(from.Column - 4)), new Coords(from.Row, (sbyte)(from.Column - 1)), situation);
@@ -86,7 +95,7 @@ namespace Chess.Model.ChessLogic
             if (automaticPromotion && situation.ChessBoard[to.Row, to.Column].Status == 'p')
                 if (to.Row == 7 || to.Row == 0)
                     situation.ChessBoard[to.Row, to.Column].Status = 'q';
-            situation.WhiteOnTurn = !situation.WhiteOnTurn;                
+            situation.WhiteOnTurn = !situation.WhiteOnTurn;
         }
         public static bool ValidMoveDuringCheck(Coords from, Coords to, Situation situation)
         {
@@ -120,7 +129,7 @@ namespace Chess.Model.ChessLogic
         }
         public void PoleClick(Coords coords)
         {
-            if(selectedCoords == null)
+            if (selectedCoords == null)
             {
                 if (situation.ChessBoard[coords.Row, coords.Column].Status != 'n' && situation.ChessBoard[coords.Row, coords.Column].IsWhite == situation.WhiteOnTurn)
                     SelectPossibleMoves(coords);
@@ -131,15 +140,15 @@ namespace Chess.Model.ChessLogic
                     DeselectSquare(coordsPossibleMove);
 
                 bool selectedClicked = false;
-                for(int i =0;i<selectedCoords.Length - 1; i++)
+                for (int i = 0; i < selectedCoords.Length - 1; i++)
                 {
-                    if(selectedCoords[i].Equals(coords))
+                    if (selectedCoords[i].Equals(coords))
                     {
                         selectedClicked = true;
                         break;
                     }
                 }
-                if(selectedClicked)
+                if (selectedClicked)
                 {
                     MovePiece(selectedCoords[selectedCoords.Length - 1], coords);
                     selectedCoords = null;
@@ -175,14 +184,14 @@ namespace Chess.Model.ChessLogic
         }
         void DrawCalculatedSituation()
         {
-            for(int row = 0; row < 8; row++)
+            for (int row = 0; row < 8; row++)
             {
-                for(int col = 0; col< 8; col++)
+                for (int col = 0; col < 8; col++)
                 {
-                    switch(situation.ChessBoard[row, col].Status)
+                    switch (situation.ChessBoard[row, col].Status)
                     {
                         case 'n':
-                            if(((Grid)buttonChessBoard[row, col].Content).Children[1] is Image)
+                            if (((Grid)buttonChessBoard[row, col].Content).Children[1] is Image)
                             {
                                 ((Grid)(buttonChessBoard[row, col].Content)).Children.RemoveRange(0, 2);
                                 ((Grid)(buttonChessBoard[row, col].Content)).Children.Add(new System.Windows.UIElement());
@@ -204,18 +213,35 @@ namespace Chess.Model.ChessLogic
                     SelectSquare(selectedCoords[i]);
                 SelectSquare(selectedCoords[selectedCoords.Length - 1]);
             }
-            if(calculatedSituation.Check)
+            if (calculatedSituation.Check)
             {
-                textBlockStatus.Text = "Check";
+                textBlockStatus.Text = "Шах";
                 if (calculatedSituation.DrawMate)
-                    textBlockStatus.Text = "Mate";
+                {
+                    if (calculatedSituation.WhiteOnTurn)
+                    {
+                        textBlockStatus.Text = "Черные победили";
+                        LoginViewModel.logedEnemy.AmountParties++;
+                        LoginViewModel.logedEnemy.WinsCount++;
+                        LoginViewModel.logedUser.AmountParties++;
+                        DataBaseMethods.UpdateAfterWins(LoginViewModel.logedEnemy, LoginViewModel.logedUser);
+                    }
+                    else
+                    {
+                        textBlockStatus.Text = "Белые победили";
+                        LoginViewModel.logedUser.AmountParties++;
+                        LoginViewModel.logedUser.WinsCount++;
+                        LoginViewModel.logedEnemy.AmountParties++;
+                        DataBaseMethods.UpdateAfterWins(LoginViewModel.logedUser, LoginViewModel.logedEnemy);
+                    }
+                }
             }
             else
             {
                 if (calculatedSituation.DrawMate == false)
                     textBlockStatus.Text = "";
                 else
-                    textBlockStatus.Text = "Mate";
+                    textBlockStatus.Text = "Мат";
             }
         }
         void SelectPossibleMoves(Coords coords)
@@ -224,7 +250,7 @@ namespace Chess.Model.ChessLogic
             selectedCoords = new Coords[piece.PossibleMoves.Length + 1];
             selectedCoords[selectedCoords.Length - 1] = coords;
             SelectSquare(coords, false, true);
-            for(int i = 0; i<piece.PossibleMoves.Length; i++)
+            for (int i = 0; i < piece.PossibleMoves.Length; i++)
             {
                 selectedCoords[i] = piece.PossibleMoves[i];
                 SelectSquare(piece.PossibleMoves[i]);
@@ -268,7 +294,7 @@ namespace Chess.Model.ChessLogic
             image.SetValue(RenderOptions.BitmapScalingModeProperty, BitmapScalingMode.Fant);
             image.Tag = pc;
             string path;
-            switch(pc.Status)
+            switch (pc.Status)
             {
                 case 'p':
                     if (pc.IsWhite)
@@ -311,6 +337,51 @@ namespace Chess.Model.ChessLogic
             }
             image.Source = new BitmapImage(new Uri(path));
             return image;
+        }
+        public void SaveIntoFile()
+        {
+            DateTime dt = DateTime.Now;
+            string name = string.Format("Chess {0}-{1}{2} {3}", dt.Year, dt.ToString("MM"), dt.ToString("dd"), dt.ToString("HH.mm"));
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Text files|*.txt";
+            sfd.FileName = name;
+            if (sfd.ShowDialog() == true)
+            {
+                try
+                {
+                    ChessFile file = new ChessFile(situation);
+                    file.Save(sfd.FileName);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Saving failuer", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
+        }
+        public void LoadFromFile()
+        {
+            if (selectedCoords != null)
+                foreach (Coords selCord in selectedCoords)
+                    DeselectSquare(selCord);
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Text files|*.txt";
+            ofd.Multiselect = false;
+            if (ofd.ShowDialog() != true)
+                return;
+            ChessFile file = new ChessFile();
+            try
+            {
+                file.Load(ofd.OpenFile());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Loading failure", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            situation = file.Situation;
+            calculatedSituation = new CalculatedSituation(situation);
+            DrawCalculatedSituation();
         }
         TextBlock GenerateNoLostPiecesTextBlock()
         {
