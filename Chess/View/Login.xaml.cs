@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chess.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,18 @@ namespace Chess.View
         public Login()
         {
             InitializeComponent();
+        }
+
+        private void LoginInGame(object sender, RoutedEventArgs e)
+        {
+            if (LoginViewModel.checkAllDataToLogin(LoginBox.Text, PasswordBox.Password.GetHashCode().ToString()))
+            {
+                LabelInvalidNickName.Visibility = Visibility.Visible;
+                Log.CommandParameter = "Login";
+            }
+            else
+                Log.CommandParameter = "Menu";
+
         }
     }
 }

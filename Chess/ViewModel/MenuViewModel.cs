@@ -13,6 +13,7 @@ using Chess.Model.Commands;
 using Chess.View;
 using System.Windows.Input;
 using Chess.Model.ChessLogic;
+using Chess.Model;
 
 namespace Chess.ViewModel
 {
@@ -22,6 +23,8 @@ namespace Chess.ViewModel
         private MenuModel menu;
         private Raiting raiting;
         private Game game;
+        private Login login;
+        private Register register;
         private RelayCommand selectPage;
         private RelayCommand closeGame;
         public Page CurrentPage
@@ -30,8 +33,7 @@ namespace Chess.ViewModel
             set
             {
                 currentPage = value;
-                if(!(currentPage.DataContext is Engine))
-                    currentPage.DataContext = this;
+                currentPage.DataContext = this;
                 OnPropertyChanged("CurrentPage");
             }
         }
@@ -63,9 +65,20 @@ namespace Chess.ViewModel
                               {
                                   if (menu == null) { CurrentPage = menu = new MenuModel(); }
                                   else { CurrentPage = menu; }
-
                                   break;
                               }
+                        case "Login":
+                            {
+                                if (login == null) CurrentPage = login = new Login();
+                                else CurrentPage = login;
+                                break;
+                            }
+                        case "Register":
+                            {
+                                if (register == null) CurrentPage = register = new Register();
+                                else CurrentPage = register;
+                                break;
+                            }
                           default:
                               {
                                   CurrentPage = menu;

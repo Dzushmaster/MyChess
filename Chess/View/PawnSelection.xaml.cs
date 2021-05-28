@@ -36,24 +36,28 @@ namespace Chess.View
                             img.Source = new BitmapImage(new Uri("D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/White_Rook.png"));
                         else
                             img.Source = new BitmapImage(new Uri("D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/Black_Rook.png"));
+                        button_rook.Content = img;
                         break;
                     case 1:
                         if (isWhite)
                             img.Source = new BitmapImage(new Uri("D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/White_Bishop.png"));
                         else
                             img.Source = new BitmapImage(new Uri("D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/Black_Bishop.png"));
+                        button_bishop.Content = img;
                         break;
                     case 2:
                         if (isWhite)
                             img.Source = new BitmapImage(new Uri("D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/White_Knight.png"));
                         else
                             img.Source = new BitmapImage(new Uri("D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/Black_Knight.png"));
+                        button_knight.Content = img;
                         break;
                     case 3:
                         if (isWhite)
                             img.Source = new BitmapImage(new Uri("D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/White_Queen.png"));
                         else
                             img.Source = new BitmapImage(new Uri("D:/Last_Course_Project/COURSE_PROJECT/Image/Pieces/Black_Queen.png"));
+                        button_queen.Content = img;
                         break;
                 }
 

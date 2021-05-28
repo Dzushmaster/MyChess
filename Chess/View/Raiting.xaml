@@ -9,9 +9,10 @@
       Title="Raiting">
     <Page.Resources>
         <Style TargetType="Button" x:Key="ButtonWithText">
-            <Setter Property="FontSize" Value="30"/>
-            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="35"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="AliceBlue"/>
         </Style>
         <Style TargetType="Button" x:Key="ButtonWithImage">
             <Setter Property="Margin" Value="3"/>
@@ -28,18 +29,14 @@
             <Image Source="D:\COURSE_PROJECT\Image\Left.png"/>
         </Button>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-            <Button Style="{StaticResource ButtonWithImage}" Width="{Binding ElementName=Return, Path=ActualHeight}">
-                <Image Source="D:\COURSE_PROJECT\Image\Add.png"/>
-            </Button>
-            <Button Style="{StaticResource ButtonWithImage}" Width="{Binding ElementName=Return, Path=ActualHeight}" >
+            <Button x:Name="DeleteUser" Style="{StaticResource ButtonWithImage}" Width="{Binding ElementName=Return, Path=ActualHeight}" Click="DeleteUserBt" >
                 <Image Source="D:\COURSE_PROJECT\Image\trash.png" />
             </Button>
         </StackPanel>
         <TextBlock Grid.Row="0" Foreground="White" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Text="{DynamicResource Raiting}"/>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1">
-            <Button Style="{StaticResource ButtonWithText}" Content="Points"/>
-            <Button Style="{StaticResource ButtonWithText}" Content="Number of parties"/>
-            <Button Style="{StaticResource ButtonWithText}" Content="%wins" />
+            <Button Style="{StaticResource ButtonWithText}" Content=" Количество партий " Click="PartiesBt"/>
+            <Button Style="{StaticResource ButtonWithText}" Content=" Количество побед " Click="WinsBt" />
         </StackPanel>
         <Grid Grid.Row="2" ShowGridLines="True">
             <Grid.ColumnDefinitions>
@@ -47,8 +44,25 @@
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel Margin="5" x:Name="StackPan" Grid.Column="1" Background="AliceBlue">
-            </StackPanel>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.Column="1">
+                <StackPanel Margin="5,0,5,0" Orientation="Horizontal">
+                    <Label FontSize="30" HorizontalAlignment="Left" Background="AliceBlue"   Width="200" Content="Nickname" Grid.Column="0"/>
+                    <Label FontSize="30" HorizontalAlignment="Center" Background="AliceBlue" Width="270" Content="Number of parties" Grid.Column="1"/>
+                    <Label FontSize="30" HorizontalAlignment="Right" Background="AliceBlue"  Width="145" Content="Wins" Grid.Column="2"/>
+                </StackPanel>
+            </Grid>
+            <DataGrid x:Name="RaitGrid" AutoGenerateColumns="False" Margin="5,0,5,40" Background="AliceBlue" Grid.Row="1" Grid.Column="1" IsReadOnly="True" HeadersVisibility="None" BorderThickness="2">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="NickName" Binding="{Binding NickName }" Width = "200"       FontSize="30"/>
+                    <DataGridTextColumn Header="AmountPart" Binding="{Binding AmountParties}" Width = "270" FontSize="30"/>
+                    <DataGridTextColumn Header="WinsCount" Binding="{Binding WinsCount}" Width = "135"      FontSize="30"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBox x:Name="DelBox" Grid.Row="1"  Grid.Column="1" FontSize="20" Text="Input to delete" Height="30" Margin="5,0,5,5" VerticalAlignment="Bottom"/>
         </Grid>
     </Grid>
 </Page>

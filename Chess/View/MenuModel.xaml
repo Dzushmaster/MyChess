@@ -25,10 +25,8 @@
                 CHESS
             </TextBlock>
             <StackPanel VerticalAlignment="Center" Grid.Column="0">
-                <Button Content="{DynamicResource SearchOpponent}" Margin = "10" FontSize = "25"/>
                 <Button CommandParameter="OneDevice" Command="{Binding Path = SelectPage}" Content="{DynamicResource OneDevice}" Margin = "10" FontSize = "25"/>
                 <Button CommandParameter="Raiting"   Command="{Binding SelectPage}" Content="{DynamicResource Raiting}" Margin = "10" FontSize = "25"/>
-                <Button  Content="{DynamicResource ChangeLang}" Margin = "10" FontSize = "25"/>
                 <Button Command="{Binding Path=CloseGame}" Content="{DynamicResource Exit}" Margin = "10" FontSize = "25"/>
             </StackPanel>
         </Grid>

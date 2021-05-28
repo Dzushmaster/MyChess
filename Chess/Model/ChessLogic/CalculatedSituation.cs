@@ -121,7 +121,7 @@ namespace Chess.Model.ChessLogic
                 if(pair.Value is King)
                     ((King)pair.Value).PossibleEnemeAttacks = calculatedSituationData.EnemyPossibleAttacks;
                 pair.Value.UpdatePossibleMoves(situation, Check, pair.Key);
-                if (DrawMate == true && pair.Value.PossibleMoves.Length > 0)
+                if (DrawMate && pair.Value.PossibleMoves.Length > 0)
                     DrawMate = false;
             }
         }

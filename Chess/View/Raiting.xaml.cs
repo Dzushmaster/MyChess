@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Chess.Model;
+using Chess.Model.DataBase;
+using Chess.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +23,42 @@ namespace Chess.View
     /// </summary>
     public partial class Raiting : Page
     {
+        List<Player> players;
         public Raiting()
         {
             InitializeComponent();
+            GetByName();
+            if (!CheckAdmin())
+            {
+                DelBox.Visibility = Visibility.Hidden;
+                DeleteUser.Visibility = Visibility.Hidden;
+            }
+        }
+        private bool CheckAdmin() => LoginViewModel.logedUser.Role == (int)Roles.Role.Admin;
+
+        private void PartiesBt(object sender, RoutedEventArgs e)
+        {
+            RaitGrid.ItemsSource = DataBaseMethods.GetPlayersByAmountParties();
+        }
+
+        private void WinsBt(object sender, RoutedEventArgs e)
+        {
+            RaitGrid.ItemsSource = DataBaseMethods.GetPlayersByWins();
+        }
+        private void GetByName()
+        {
+            RaitGrid.ItemsSource = DataBaseMethods.GetPlayersByName();
+        }
+
+        private void DeleteUserBt(object sender, RoutedEventArgs e)
+        {
+            if (DataBaseMethods.DeleteUser(DelBox.Text))
+            {
+                RaitGrid.ItemsSource = DataBaseMethods.GetPlayersByName();
+                DelBox.Text = "Успешно удален";
+            }
+            else
+                DelBox.Text = "Пользователь не найден";
         }
     }
 }

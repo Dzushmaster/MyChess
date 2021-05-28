@@ -26,7 +26,7 @@ namespace Chess
         {
             InitializeComponent();
             DataContext = _model;
-            _model.SelectPage.Execute("Menu");
+            _model.SelectPage.Execute("Login");
         }
     }
 }

@@ -29,7 +29,8 @@ namespace Chess.Model.ChessLogic.Figures
             //Up
             cord = new Coords((sbyte)(coords.Row - 1), coords.Column);
             if (coords.Row > 0)
-                if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' && PossibleEnemeAttacks.Contains(cord) == false && situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
+                if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' && situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
+                    if(PossibleEnemeAttacks.Contains(cord) == false)
                     possibleMoves.Add(cord);
             //RightUp
             cord = new Coords((sbyte)(coords.Row - 1), (sbyte)(coords.Column + 1));
@@ -43,7 +44,7 @@ namespace Chess.Model.ChessLogic.Figures
                     possibleMoves.Add(cord);
             //RightDown
             cord = new Coords((sbyte) (coords.Row + 1), (sbyte)(coords.Column + 1));
-            if (coords.Row < 7 && coords.Row < 7)
+            if (coords.Row < 7 && coords.Column < 7)
                 if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' && PossibleEnemeAttacks.Contains(cord) == false && situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
                     possibleMoves.Add(cord);
             //Down
@@ -123,6 +124,7 @@ namespace Chess.Model.ChessLogic.Figures
                     }
                 }
             }
+            #endregion
             //Check possible attack after moving this piece
             else
             {
@@ -131,7 +133,6 @@ namespace Chess.Model.ChessLogic.Figures
                         possibleMoves.RemoveAt(i);
             }
             PossibleMoves = possibleMoves.ToArray();
-            #endregion
         }
         public override void UpdatePossibleAttacks(Situation situation, Coords coords)
         {

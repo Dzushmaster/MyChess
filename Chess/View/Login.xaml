@@ -12,6 +12,10 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="30"/>
         </Style>
+        <Style TargetType="Label" x:Key="InvalidText">
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="White"/>
             <Setter Property="FontSize" Value="30"/>
@@ -23,6 +27,7 @@
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="30"/>
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="White"/>
         </Style>
         <VisualBrush x:Key="RegisterBackground">
             <VisualBrush.Visual>
@@ -33,20 +38,26 @@
     <Grid Background="{StaticResource RegisterBackground}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="4*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Grid.Column="1" HorizontalAlignment="Center" FontSize="60" Foreground="White" Content="LOGIN"/>
+        <Label Grid.Column="1" HorizontalAlignment="Center" FontSize="60" Foreground="White" Content="АВТОРИЗАЦИЯ"/>
         <StackPanel Margin="5" Grid.Column="1" VerticalAlignment="Center">
-            <Label Foreground="White" Content="Login:"/>
-            <TextBox Background="White"/>
-            <Label Foreground="White" Content="Password:"/>
-            <PasswordBox Background="White"/>
-            <Button Margin="0,45,0,20" Content="Login/Register"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="White" Content="Никнейм:"/>
+                <Label Name="LabelInvalidNickName" Visibility="Hidden" Style="{StaticResource InvalidText}" Content="Неверный логин или пароль"/>
+            </StackPanel>
+            <TextBox x:Name="LoginBox" Background="White"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Пароль:"/>
+            </StackPanel>
+            <PasswordBox x:Name="PasswordBox" Background="White"/>
+            <Button Margin="0,35,0,0" Name="Log"  Content="Войти" Command="{Binding SelectPage}" Click="LoginInGame"/>
+            <Button Margin="0,35,0,20"  Command="{Binding SelectPage}" CommandParameter="Register"  Content="Регистрация"/>
         </StackPanel>
     </Grid>
 </Page>

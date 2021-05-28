@@ -1,4 +1,6 @@
 ﻿using Chess.Model.ChessLogic;
+using Chess.Model.DataBase;
+using Chess.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +29,14 @@ namespace Chess.View
         public Game()
         {
             InitializeComponent();
-            resizeTimer.Tick += resizeTimer_Tick;
+            usN2.Text = LoginViewModel.logedUser.NickName;
+            usN1.Text = LoginViewModel.logedEnemy.NickName;
             Button[,] buttons = createBoard();
             engine = new Engine(buttons, textBlockStatus, OpenPawnChoice);
+            DispatcherTimer LiveTimer = new DispatcherTimer();
+            LiveTimer.Interval = TimeSpan.FromSeconds(1);
+            LiveTimer.Tick += timer_Tick;
+            LiveTimer.Start();
             DataContext = engine;
         }
         public Button[,] createBoard()
@@ -79,12 +86,9 @@ namespace Chess.View
         {
             engine.LoadedChessUserControl();
         }
-        DispatcherTimer resizeTimer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(10) };
-        void resizeTimer_Tick(object sender, EventArgs e)
+        void timer_Tick(object sender, EventArgs e)
         {
-            resizeTimer.IsEnabled = false;
-            engine.ImageSizeWrapPanel = GridBoard.ActualWidth * sizeRatio;
+            LiveTimeLabel.Content = DateTime.Now.ToString("HH:mm:ss");
         }
-        const double sizeRatio = 0.105;
     }
 }
