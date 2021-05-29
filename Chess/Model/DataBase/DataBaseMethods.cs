@@ -74,7 +74,7 @@ namespace Chess.Model.DataBase
             List<Player> players = new List<Player>();
             using (DBContexts connecting = new DBContexts())
             {
-                players = connecting.Players.Take(11).OrderByDescending(b => b.WinsCount).ToList();
+                players = connecting.Players.Take(10).OrderByDescending(b => b.WinsCount).ToList();
             }
             return players;
         }
@@ -84,7 +84,7 @@ namespace Chess.Model.DataBase
             List<Player> players = new List<Player>();
             using (DBContexts connecting = new DBContexts())
             {
-                players = connecting.Players.Take(11).OrderByDescending(b => b.AmountParties).ToList();
+                players = connecting.Players.Take(10).OrderByDescending(b => b.AmountParties).ToList();
             }
             return players;
         }
@@ -95,7 +95,7 @@ namespace Chess.Model.DataBase
             List<Player> players = new List<Player>();
             using (DBContexts connecting = new DBContexts())
             {
-                players = connecting.Players.Take(11).OrderBy(b => b.NickName).ToList();
+                players = connecting.Players.Take(10).OrderBy(b => b.NickName).ToList();
             }
             return players;
         }

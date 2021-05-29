@@ -45,21 +45,21 @@
             <RowDefinition Height="5*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Grid.Column="1" HorizontalAlignment="Center" FontSize="60" Foreground="White" Content="REGISTER"/>
+        <Label Grid.Column="1" HorizontalAlignment="Center" FontSize="60" Foreground="White" Content="Регистрация"/>
         <StackPanel Margin="5" Grid.Column="1" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
-                <Label Foreground="White" Content="Nickname:"/>
-                <Label Name="LabelInvalidNickname" Visibility="Hidden" Style="{StaticResource InvalidText}" Content="Invalid nickname"/>
+                <Label Foreground="White" Content="Ник:"/>
+                <Label Name="LabelInvalidNickname" Visibility="Hidden" Style="{StaticResource InvalidText}" Content="Ошибочный ник"/>
             </StackPanel>
             <TextBox x:Name="LoginBox" Background="White"/>
-            <Label Foreground="White" Content="Password:"/>
-            <PasswordBox x:Name="PasswordBox" Background="White"/>
             <StackPanel Orientation="Horizontal">
-                <Label Foreground="White" Content="Repeat password:"/>
-                <Label Name="LabelInvalidPassword" Visibility="Hidden" Style="{StaticResource InvalidText}" Content="Invalid password"/>
+                <Label Foreground="White" Content="Пароль:"/>
+                <Label Name="LabelInvalidPassword" Visibility="Hidden" Style="{StaticResource InvalidText}" Content="Ошибочный пароль"/>
             </StackPanel>
+            <PasswordBox x:Name="PasswordBox" Background="White"/>
+                <Label Foreground="White" Content="Повторить пароль:"/>
             <PasswordBox x:Name="repPasswordBox" Background="White"/>
-            <Button x:Name="Reg" Margin="0,35,0,20" Command="{Binding SelectPage}" Content="Register" Click="RegisterBt"/>
+            <Button x:Name="Reg" Margin="0,35,0,20" Command="{Binding SelectPage}" Content="Регистрация" Click="RegisterBt"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Chess.View"
       mc:Ignorable="d" 
-      d:DesignHeight="550" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="900"
       Title="Raiting">
     <Page.Resources>
         <Style TargetType="Button" x:Key="ButtonWithText">
@@ -19,7 +19,7 @@
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
     </Page.Resources>
-    <Grid Background="Black" ShowGridLines="True">
+    <Grid Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="1.2*"/>
             <RowDefinition Height="1*"/>
@@ -38,7 +38,7 @@
             <Button Style="{StaticResource ButtonWithText}" Content=" Количество партий " Click="PartiesBt"/>
             <Button Style="{StaticResource ButtonWithText}" Content=" Количество побед " Click="WinsBt" />
         </StackPanel>
-        <Grid Grid.Row="2" ShowGridLines="True">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="5*"/>
@@ -49,20 +49,20 @@
                 <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Grid.Column="1">
-                <StackPanel Margin="5,0,5,0" Orientation="Horizontal">
-                    <Label FontSize="30" HorizontalAlignment="Left" Background="AliceBlue"   Width="200" Content="Nickname" Grid.Column="0"/>
-                    <Label FontSize="30" HorizontalAlignment="Center" Background="AliceBlue" Width="270" Content="Number of parties" Grid.Column="1"/>
-                    <Label FontSize="30" HorizontalAlignment="Right" Background="AliceBlue"  Width="145" Content="Wins" Grid.Column="2"/>
+                <StackPanel Margin="5,0,5,0" Width="560" Orientation="Horizontal">
+                    <Label FontSize="30" HorizontalAlignment="Left" Background="AliceBlue"   Width="200" Content="Ник" Grid.Column="0"/>
+                    <Label FontSize="30" HorizontalAlignment="Center" Background="AliceBlue" Width="240" Content="Партий" Grid.Column="1"/>
+                    <Label FontSize="30" HorizontalAlignment="Right" Background="AliceBlue"  Width="110" Content="Побед" Grid.Column="2"/>
                 </StackPanel>
             </Grid>
-            <DataGrid x:Name="RaitGrid" AutoGenerateColumns="False" Margin="5,0,5,40" Background="AliceBlue" Grid.Row="1" Grid.Column="1" IsReadOnly="True" HeadersVisibility="None" BorderThickness="2">
+            <DataGrid x:Name="RaitGrid" AutoGenerateColumns="False" Margin="5,0,5,40" Height="310" Width="560" Background="AliceBlue" Grid.Row="1" Grid.Column="1" IsReadOnly="True" HeadersVisibility="None" BorderThickness="2">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="NickName" Binding="{Binding NickName }" Width = "200"       FontSize="30"/>
-                    <DataGridTextColumn Header="AmountPart" Binding="{Binding AmountParties}" Width = "270" FontSize="30"/>
-                    <DataGridTextColumn Header="WinsCount" Binding="{Binding WinsCount}" Width = "135"      FontSize="30"/>
+                    <DataGridTextColumn Header="NickName" Binding="{Binding NickName }" Width = "200"       FontSize="20"/>
+                    <DataGridTextColumn Header="AmountPart" Binding="{Binding AmountParties}" Width = "240" FontSize="20"/>
+                    <DataGridTextColumn Header="WinsCount" Binding="{Binding WinsCount}" Width = "110"      FontSize="20"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <TextBox x:Name="DelBox" Grid.Row="1"  Grid.Column="1" FontSize="20" Text="Input to delete" Height="30" Margin="5,0,5,5" VerticalAlignment="Bottom"/>
+            <TextBox x:Name="DelBox" Grid.Row="1"  Grid.Column="1" FontSize="20" Text="Input to delete" Height="45" Margin="40,0,40,5" VerticalAlignment="Bottom"/>
         </Grid>
     </Grid>
 </Page>
