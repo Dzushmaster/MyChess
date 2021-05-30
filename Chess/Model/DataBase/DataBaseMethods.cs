@@ -9,10 +9,6 @@ namespace Chess.Model.DataBase
 {
     public static class DataBaseMethods
     {
-        static DataBaseMethods()
-        {
-            LoginViewModel.logedEnemy = GetUser("PaulSali");
-        }
         //Найти юзера для регистрации и логина
         public static Player GetUser(string nickName)
         {
@@ -110,7 +106,17 @@ namespace Chess.Model.DataBase
                 Player player2 = connecting.Players.FirstOrDefault(b => b.NickName.Equals(Enemy.NickName));
                 player2.WinsCount = User.WinsCount;
                 player2.AmountParties = player2.AmountParties;
+                connecting.SaveChanges();
             }
+        }
+        public static Player GetRandomEnemy(Player player)
+        {
+            Player player1 = new Player();
+            using (DBContexts connecting = new DBContexts())
+            {
+                player1 = connecting.Players.Where(x => !player.NickName.Equals(x.NickName)).OrderBy(x => Math.Abs((long)(x.WinsCount - player.WinsCount))).First();
+            }
+            return player1;
         }
     }
 }

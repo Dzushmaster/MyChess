@@ -1,4 +1,5 @@
-﻿using Chess.Model.ChessLogic;
+﻿using Chess.Model;
+using Chess.Model.ChessLogic;
 using Chess.Model.DataBase;
 using Chess.ViewModel;
 using System;
@@ -30,6 +31,7 @@ namespace Chess.View
         {
             InitializeComponent();
             usN2.Text = LoginViewModel.logedUser.NickName;
+            LoginViewModel.logedEnemy = DataBaseMethods.GetRandomEnemy(LoginViewModel.logedUser);
             usN1.Text = LoginViewModel.logedEnemy.NickName;
             Button[,] buttons = createBoard();
             engine = new Engine(buttons, textBlockStatus, OpenPawnChoice);

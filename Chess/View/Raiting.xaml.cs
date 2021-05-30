@@ -28,11 +28,11 @@ namespace Chess.View
         {
             InitializeComponent();
             GetByName();
-            //if (!CheckAdmin())
-            //{
+            if (!CheckAdmin())
+            {
                 DelBox.Visibility = Visibility.Hidden;
                 DeleteUser.Visibility = Visibility.Hidden;
-            //}
+            }
         }
         private bool CheckAdmin() => LoginViewModel.logedUser.Role == (int)Roles.Role.Admin;
 

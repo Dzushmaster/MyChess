@@ -19,44 +19,52 @@ namespace Chess.Model.ChessLogic.Figures
             #region Moving
             //Left
             if (coords.Column > 0)
-                if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' && PossibleEnemeAttacks.Contains(cord) == false && situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
-                    possibleMoves.Add(cord);
+                if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' || situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
+                    if(PossibleEnemeAttacks.Contains(cord) == false)
+                        possibleMoves.Add(cord);
             //LeftUp
             cord = new Coords((sbyte)(coords.Row - 1), (sbyte)(coords.Column - 1));
             if (coords.Column > 0 && coords.Row > 0)
-                if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' && PossibleEnemeAttacks.Contains(cord) == false && situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
-                    possibleMoves.Add(cord);
+                if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n'  || situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
+                    if(PossibleEnemeAttacks.Contains(cord) == false)
+                        possibleMoves.Add(cord);
             //Up
-            cord = new Coords((sbyte)(coords.Row - 1), coords.Column);
+
+            cord = new Coords((sbyte)(coords.Row - 1), (sbyte)(coords.Column));
             if (coords.Row > 0)
-                if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' && situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
+                if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' || situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
                     if(PossibleEnemeAttacks.Contains(cord) == false)
                     possibleMoves.Add(cord);
             //RightUp
             cord = new Coords((sbyte)(coords.Row - 1), (sbyte)(coords.Column + 1));
             if (coords.Row > 0 && coords.Column < 7)
-                if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' && PossibleEnemeAttacks.Contains(cord) == false && situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
-                    possibleMoves.Add(cord);
+                if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n'  || situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
+                    if(PossibleEnemeAttacks.Contains(cord) == false)
+                        possibleMoves.Add(cord);
             //Right
             cord = new Coords(coords.Row, (sbyte)(coords.Column + 1));
             if (coords.Column < 7)
-                if (situation.ChessBoard[coords.Row, coords.Column].Status == 'n' && PossibleEnemeAttacks.Contains(cord) == false && situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
-                    possibleMoves.Add(cord);
+                if (situation.ChessBoard[coords.Row, coords.Column].Status == 'n' || situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
+                    if(PossibleEnemeAttacks.Contains(cord) == false)
+                        possibleMoves.Add(cord);
             //RightDown
             cord = new Coords((sbyte) (coords.Row + 1), (sbyte)(coords.Column + 1));
             if (coords.Row < 7 && coords.Column < 7)
-                if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' && PossibleEnemeAttacks.Contains(cord) == false && situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
-                    possibleMoves.Add(cord);
+                if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' || situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
+                    if(PossibleEnemeAttacks.Contains(cord) == false)
+                        possibleMoves.Add(cord);
             //Down
             cord = new Coords((sbyte)(coords.Row + 1), coords.Column);
             if (coords.Row < 7)
-                if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' && PossibleEnemeAttacks.Contains(cord) == false && situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
-                    possibleMoves.Add(cord);
+                if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' || situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
+                    if(PossibleEnemeAttacks.Contains(cord) == false)
+                        possibleMoves.Add(cord);
             //LeftDown
             cord = new Coords((sbyte)(coords.Row + 1), (sbyte)(coords.Column - 1));
             if (coords.Row < 7 && coords.Column > 0)
-                if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' && PossibleEnemeAttacks.Contains(cord) && situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
-                    possibleMoves.Add(cord);
+                if (situation.ChessBoard[cord.Row, cord.Column].Status == 'n' || situation.ChessBoard[cord.Row, cord.Column].IsWhite != IsWhite)
+                    if(PossibleEnemeAttacks.Contains(cord) == false)
+                        possibleMoves.Add(cord);
             #endregion
             #region Castling
             if(check == false)
